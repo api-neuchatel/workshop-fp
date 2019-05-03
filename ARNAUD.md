@@ -4,8 +4,15 @@
 Chaque participant doit disposer d'un environnement fonctionnel (Node + NPM)  
 Imposer les outils?
 
-## Introduction au Workshop
-Présentation du programme
+## Partie 0
+#### Théorie 15mn
+- Présentation du programme
+- Présentation du paradigme fonctionnel (sondage?! quelques questions?)
+  - Depuis combien de temps ça existe?
+  - Pourquoi c'est de retour?
+  - Quelles différences avec la programmation impérative?
+  - A quoi ça sert?
+  - Est-ce qu'il faut avoir un doctorat en mathématiques?
 
 ## Partie 1
 ### TDD + Side-effects free functions
@@ -137,7 +144,7 @@ fib(); // => 3
  [L'exercice de Xavier](https://playcode.io/302769?tabs=console&script.js&output)  
  Relation avec les fonctions reduce(),fold(),inject()
 
-### Pratique 30mn
+#### Pratique 30mn
 - Transformation de boucles impératives
 - Réduction de données grâce à reduce()
 
@@ -151,3 +158,4 @@ fib(); // => 3
 ## Allez plus loin
 
 Langages fonctionnelles : Haskell, ELM, ReasonML, Clojure/script, F#, Elixir, Erlang
+Le "cas" Scala
