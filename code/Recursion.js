@@ -36,7 +36,7 @@ let filter = xs => p => {
  * Reduces an array (xs) using a given combiner (c).
  * Type: [A] => (A => A => A) => A
  */
-let reduce = xs => c => xs.length === 0 ? [] : c(head(xs))(reduce(tail(xs))(c))
+let reduce = xs => c => xs.length === 1 ? head(xs) : c(head(xs))(reduce(tail(xs))(c))
 
 // Examples
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -45,3 +45,4 @@ let even = xs => filter(xs)(x => x % 2 === 0)
 console.log(double(numbers))
 console.log(even(numbers))
 console.log(reduce(even(numbers))(x => y => x + y))
+console.log(reduce(numbers)(x => y => x + y))
