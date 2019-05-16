@@ -175,7 +175,7 @@ stream.map(x => 2*x)
 stream.filter(x => isPrime(x))
 // Prendre des valeurs jusqu'à ce qu'une condition soit vérifiée
 stream.takeUntil(x => p(x))
-    ```
+```
 
 **Pratique : Durée 20mn**
 
