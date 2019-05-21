@@ -2,8 +2,9 @@
 
 ## TODO
   - [ ] Arnaud - Introduction
-  - [ ] Arnaud - Partie 1 : Trouver des fonctions simples
-  - [ ] Xavier - Partie 2 (Théorie + Pratique)
+  - [ ] Xavier - Partie 1 Récriture de code
+  - [ ] Xavier - Partie 2 (Théorie) - Abstraction
+  - [ ] Arnaud - Partie 2 (Pratique) - First class functions
   - [ ] Xavier - Partie 3 (Théorie)
   - [ ] Arnaud - Partie 3 (Pratique)
   - [ ] Xavier - Partie 4 (Théorie + Pratique)
