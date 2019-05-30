@@ -38,7 +38,7 @@ let Stream = {
             return {
                 value: s.value,
                 next() { return Stream.filter(s.next())(p) }
-            }
+       /*  */     }
         }
         return Stream.filter(s.next())(p)
     },
@@ -61,9 +61,11 @@ let Stream = {
   let even = Stream.map(integers)(x => 2*x)
   let mul3 = Stream.filter(integers)(x => x % 3 === 0)
   
-  console.log(Stream.take(integers)(10))
-  console.log(Stream.takeUntil(integers)(x => 2*x === 10))
-  console.log(Stream.take(even)(10))
-  console.log(Stream.takeUntil(even)(x => 3*x === 60))
-  console.log(Stream.take(mul3)(10))
   
+  //console.log(Stream.take(integers)(10))
+  //console.log(Stream.takeUntil(integers)(x => 2*x === 10))
+  //console.log(Stream.take(even)(10))
+  //console.log(Stream.takeUntil(even)(x => 3*x === 60))
+  //console.log(Stream.take(mul3)(10))
+  
+  export default Stream;
