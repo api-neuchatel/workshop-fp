@@ -148,7 +148,7 @@ personneById(2); // => "XAVIER"
 
 **Pratique : Durée: 20mn**
 
-## Partie 2
+## Partie 3
 ### Currying + Lazy evaluation
 
 **Théorie : Durée 20mn**
