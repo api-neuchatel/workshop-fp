@@ -1,4 +1,9 @@
 /**
+ * Partie 4: Immutability and Recursion
+ * Completed Live Coding
+ */
+
+/**
  * Returns the head of an array (ie the first element).
  * Type: [A] => A
  */
