@@ -1,1 +1,1 @@
-# Partie 2: Functions as First Class Citizen, Higher Order Functions and Closures
+# Partie 2: Functions as First Class Citizen, Higher Order Functions et Closures
