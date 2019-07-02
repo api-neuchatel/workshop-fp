@@ -63,8 +63,45 @@ function greet(gender) {
 }
 ```
 Dans ce cas, `greet("Mr")` retourne une fonction qui prend deux paramètres (`firstname` et `lastname`).
-Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonction. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
+Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonctions. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
 
 Plus sur l'évaluation partielle en Partie 3!
 
 ## 2.4: Closures
+Les __closures__ sont des lambda dont l'environnement d'exécution leur est propre.
+
+```js
+let people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
+
+// Type: (Int) => String
+let personneById = id => personnes[id];
+personneById(2) // "XAVIER"
+```
+## 2.5: Wrap-up
+Revenons à l'exemple de la section 2.1. Avec ces nouveaux outils, on peut créer une version plus générique de `double` comme ceci:
+
+```js
+// Type: ([Double], Double => A) => [A]
+function map(numbers, f) {
+  var tmp = []
+  for(i = 0; i < numbers.length; i++) {
+     tmp.push(f(numbers[i]))
+  }
+  return tmp
+}
+```
+
+Et one version générique de `even` comme ceci:
+
+```js
+// Type: ([Double], Double => Boolean) => [Double]
+function filter(numbers, p) {
+  var tmp = []
+  for(i = 0; i < numbers.length; i++) {
+    if(p(numbers[i]) {
+      tmp.push(numbers[i])
+     }
+  }
+  return tmp
+}
+```
