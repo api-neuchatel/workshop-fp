@@ -6,7 +6,7 @@
   - [ ] Xavier - Partie 1 (Pratique)
   - [x] Xavier - Partie 2 (Théorie)
   - [x] Arnaud - Partie 2 (Pratique)
-  - [ ] Xavier - Partie 3 (Théorie)
+  - [x] Xavier - Partie 3 (Théorie)
   - [ ] Arnaud - Partie 3 (Pratique)
   - [ ] Xavier - Partie 4 (Théorie)
   - [ ] Xavier - Partie 4 (Pratique)
