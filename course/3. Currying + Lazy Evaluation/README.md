@@ -117,7 +117,7 @@ let take = stream => n => {
 
 *Note: on verra en partie 4 que l'on peut réaliser la même opération de manière beaucoup plus élégante en utilisant une fonction récursive.*
 
-Alors que `take` se contente d'évaluer le stream n fois, il peut être intéressant de considérer une implémentation possible de `map`, qui elle doit aussi retourner un stream infini:
+Alors que `take` se contente d'évaluer le stream n fois, il peut être intéressant de considérer une implémentation possible de `map`, qui elle doit retourner un stream infini:
 
 ```js
 // Type: Stream[A] => (A => B) => Stream[B]
