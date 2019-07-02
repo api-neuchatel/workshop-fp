@@ -82,12 +82,12 @@ En réalité, l'implémentation d'un objet __stream__ comme ceci en Javascript n
 
 ```js
 let Stream = {
-    init: x => f => {
-        return {
-            value: x,
-            next() { return Stream.init(f(x))(f) }
-        }
+  init: x => f => {
+    return {
+      value: x,
+      next() { return Stream.init(f(x))(f) }
     }
+  }
 }
 ```
 
