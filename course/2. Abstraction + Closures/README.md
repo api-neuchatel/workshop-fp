@@ -58,11 +58,13 @@ apply(2, 3, (x, y) => x * y) // 6
 Le terme __higher order function__ designe une fonction qui prend une autre fonction en paramètre (comme `apply` ci-dessus) ou alors qui retourne une fonction. Par exemple:
 
 ```js
-function linear(a, b) {
-  return function(x) { return a*x + b }
+function greet(gender) {
+  return function(firstname, lastname) { return gender + " " + firstname + " " + lastname }
 }
 ```
-Dans ce cas, `linear(2, 3)` retourne une fonction qui correspond à une droite ax + b = 0 et prenant un paramètre `x`.
-Evaluer `linear(2, 3)(4)` donne la position y du point x = 4, selon la droite ax + b = 0.
+Dans ce cas, `greet("Mr")` retourne une fonction qui prend deux paramètres (`firstname` et `lastname`).
+Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonction. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
+
+Plus sur l'évaluation partielle en Partie 3!
 
 ## 2.4: Closures
