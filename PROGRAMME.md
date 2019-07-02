@@ -2,12 +2,14 @@
 
 ## TODO
   - [ ] Arnaud - Introduction
-  - [ ] Xavier - Partie 1 Récriture de code
-  - [x] Xavier - Partie 2 (Théorie) - Abstraction
-  - [x] Arnaud - Partie 2 (Pratique) - First class functions
+  - [x] Xavier - Partie 1 (Théorie)
+  - [ ] Xavier - Partie 1 (Pratique)
+  - [x] Xavier - Partie 2 (Théorie)
+  - [x] Arnaud - Partie 2 (Pratique)
   - [ ] Xavier - Partie 3 (Théorie)
   - [ ] Arnaud - Partie 3 (Pratique)
-  - [ ] Xavier - Partie 4 (Théorie + Pratique)
+  - [ ] Xavier - Partie 4 (Théorie)
+  - [ ] Xavier - Partie 4 (Pratique)
   - [ ] Arnaud - Partie 5 (Platformer)
 
 ## Avant le workshop
