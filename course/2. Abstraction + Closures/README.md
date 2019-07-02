@@ -98,10 +98,31 @@ Et one version générique de `even` comme ceci:
 function filter(numbers, p) {
   var tmp = []
   for(i = 0; i < numbers.length; i++) {
-    if(p(numbers[i]) {
+    if(p(numbers[i])) {
       tmp.push(numbers[i])
-     }
+    }
   }
   return tmp
 }
+```
+
+Pour aller plus loin... on pourrait même factoriser encore le code de ces deux fonctions comme ceci:
+
+```js
+// Type: ([Double], Double => Boolean, Double => A) => [A]
+function filterAndMap(numbers, p, f) {
+  var tmp = []
+  for(i = 0; i < numbers.length; i++) {
+    if(p(numbers[i])) {
+      tmp.push(f(numbers[i]))
+    }
+  }
+  return tmp
+}
+
+// Type: ([Double], Double => A) => [A]
+let map = (xs, f) => filterAndMap(xs, _ => true, f)
+// Type: ([Double], Double => Boolean) => [Double]
+let filter = (xs, p) => filterAndMap(xs, p, x => x)
+
 ```
