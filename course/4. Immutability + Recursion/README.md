@@ -83,3 +83,54 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
 prepend(0)([1, 2, 3, 4]) // [0, 1, 2, 3, 4]
 prepend(null)([1, 2, 3, 4]) // [1, 2, 3, 4]
 ```
+
+### Implémentation récursive de `map` et `filter`
+Armés de ces nouvelles structures, nous sommes prêts à passer à l'implémentation résursive de nos deux higher order functions favorites.
+
+```js
+let map = xs => f => {
+  // code
+}
+
+let filter = xs => p => {
+  // code
+}
+```
+
+La première étape de la conception d'une fonction récursive est de se demander quelle sera la condition d'arrêt, que l'on appelle également le bas de la récursion (bottom of the recursion). Sans elle, notre fonction récursive ne pourra jamais retourner et donc ne s'arrêtera jamais. Dans les deux cas, notre condition est `xs.length === 0`. On complète:
+
+```js
+let map = xs => f => {
+  if(xs.length === 0) { return [] }
+  // code
+}
+
+let filter = xs => p => {
+  if(xs.length === 0) { return [] }
+  // code
+}
+```
+
+Dans le cas de `map`, si `xs` n'est pas vide, compte tenu de notre structure de liste récursive, que fait-on? Simplement, on applique `f` à la tête de la liste, puis on récurse sur la queue. Bien sûr, il ne faut pas oublier de combiner tous nos `f(head(xs))` ensemble, il faut donc `prepend` notre nouvelle valeur à la queue à laquelle on aura déjà appliqué `f`.
+
+```js
+let map = xs => f => {
+  if(xs.length === 0) { return [] }
+  return prepend(f(head(xs)))(map(tail(xs))(f))
+}
+```
+
+On peut écrire de manière plus concise:
+```js
+let map = xs => f => xs.length === 0 ? [] : prepend(f(head(xs)))(map(tail(xs))(f))
+```
+
+Pour `filter`, le raisonnement est presque similaire. On teste `p(head(xs))`, si on obtient `true`, on `prepend` la tête à notre nouvelle liste, sinon on ne fait rien.
+
+```js
+let filter = xs => p => {
+  if(xs.length === 0) { return [] }
+  let queue = filter(tail(xs))(p)
+  return p(head(xs)) ? prepend(head(xs))(queue) : queue
+}
+```
