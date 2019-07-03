@@ -19,7 +19,7 @@ Selon Wikipedia:
 
 Plus simplement, une fonction à effet de bords est une fonction qui modifie l'état global d'un programme. Ceci comprend la modification de variables extérieures, l'écriture dans des fichiers, une base de données, les interactions au clavier, etc...
 
-En pratique, on aime définir des fonctions dont le comportement dépend uniquement de ses paramètres. Comme nous le verrons plus tard, ceci permet une grande composabilité des fonctions et facilite la compréhension des programmes grâce à une complexité moindre. En effet, les programmes fonctionnels ne contiennent quasiment pas d'état à proprement parler.
+En pratique, on aime définir des fonctions dont le comportement dépend uniquement de ses paramètres. De telles fonctions sont dites __pures__. Comme nous le verrons plus tard, ceci permet une grande composabilité des fonctions et facilite la compréhension des programmes grâce à une complexité moindre. En effet, les programmes fonctionnels ne contiennent quasiment pas d'état à proprement parler.
 
 Voici quelques exemples de fonctions sans effets de bord:
 ```js
