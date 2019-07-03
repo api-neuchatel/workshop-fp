@@ -140,6 +140,7 @@ Qu'a-t-on gagné?
 - Le code devient facile à paralléliser avec des constructions fonctionnelles (chaque nouvel appel de la fonction peut se faire dans un nouveau thread, par exemple).
 - Nous avons gagné énormément en structure! Plus besoin de gérer une boucle et un état (le compteur). Le code s'exprime comme une répétition de plusieurs fois la même opération pure, simplement évaluée avec des paramètres différents. Ceci rend l'analyse statique beaucoup plus efficace.
 
+## 4.3: Pour aller plus loin
 Javascript n'a pas été conçu pour que la récursion y soit agréable, dès lors l'écriture de ces fonctions n'est pas très lisible. D'autre langages prévoient une syntaxe bien plus élégante pour l'écriture de fonctions récursives, par exemple Scala (ici pour des listes de type `A = Int`:
 
 ```scala
