@@ -36,7 +36,7 @@ Encore une fois... que ferait-on si on voulait filter les nombres divibles par 3
 Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelle valeur. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
 
 ```js
-// Type: Double => Double
+// Type: Double, Double => Double
 let add = function(x, y) { return x + y }
 
 // Type: (Double, Double, Double => Double) => Double
