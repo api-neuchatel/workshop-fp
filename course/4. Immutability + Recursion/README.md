@@ -134,3 +134,19 @@ let filter = xs => p => {
   return p(head(xs)) ? prepend(head(xs))(queue) : queue
 }
 ```
+
+Javascript n'a pas été conçu pour que la récursion y soit agréable, dès lors l'écriture de ces fonctions n'est pas très lisible. D'autre langages prévoient une syntaxe bien plus élégante pour l'écriture de fonctions récursives, par exemple Scala (ici pour des listes de type `A = Int`:
+
+```scala
+def map(xs: List[Int], f: Int => Int): List[Int] = xs match {
+  case Nil => Nil
+  case y :: ys => f(y) :: map(ys, f)
+}
+
+def filter(xs: List[Int], p: Int => Boolean): List[Int] = xs match {
+  case Nil => Nil
+  case y :: ys => if(p(y)) y :: filter(ys, p) else filter(ys, p)
+}
+```
+
+Ici, `Nil` désigne la liste vide et l'opérateur `::` est l'équivalent de notre `prepend`. Notez la syntaxte du `match ... case`, appelé pattern-matching qui facilite largement la lecture.
