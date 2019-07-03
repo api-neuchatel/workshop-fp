@@ -65,7 +65,7 @@ function greet(gender) {
 Dans ce cas, `greet("Mr")` retourne une fonction qui prend deux paramètres (`firstname` et `lastname`).
 Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonctions. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
 
-Plus sur l'évaluation partielle en Partie 3!
+Plus sur l'évaluation partielle en partie 3!
 
 ## 2.4: Closures
 Les __closures__ sont des lambda dont l'environnement d'exécution leur est propre.
