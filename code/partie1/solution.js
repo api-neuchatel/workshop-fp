@@ -1,13 +1,19 @@
+// Type: [A] => [A]
 let shuffle = array => array.slice().sort(() => Math.random() - 0.5)
 
+// Type: [A] => A
 let getRandomCard = deck => shuffle(deck)[0]
 
+// Type: [A] => A
 let player1Strategy = getRandomCard
 
+// Type: A => A
 let player2Strategy = card => card
 
+// Type: ([A], A) => [A]
 let without = (array, element) => [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
 
+// Type: (Int, Int) => String
 let endMessage = (player1Score, player2Score) => {
 
     let winner = () => {
@@ -20,24 +26,27 @@ let endMessage = (player1Score, player2Score) => {
     return score + "\n" + winner()
 }
 
+// Type: State => String
 let turnMessage = state =>  "*** New turn! ***\n" +
-                            "Card is " + state.gameCard + "\n" + 
+                            "Card is " + state.bounty + "\n" + 
                             "Player 1 drew " + state.player1Card + "\n" +
-                            "Player 2 drew " + state.player2Card + "\n\n"
+                            "Player 2 drew " + state.player2Card + "\n"
 
+// Type: State => State
 let nextState = state => {
-    gameCard = getRandomCard(state.gameDeck)
-    player1Card = player1Strategy(state.player1Deck)
-    player2Card = player2Strategy(gameCard)
+    let bounty = getRandomCard(state.gameDeck)
+    let player1Card = player1Strategy(state.player1Deck)
+    let player2Card = player2Strategy(bounty)
 
     return {
-        gameDeck: without(state.gameDeck, gameCard),
+        gameDeck: without(state.gameDeck, bounty),
         player1Deck: without(state.player1Deck, player1Card),
         player2Deck: without(state.player2Deck, player2Card),
+        bounty: bounty,
         player1Card: player1Card,
         player2Card: player2Card,
-        player1Score: player1Card > player2Card ? state.player1Score + gameCard : state.player1Score,
-        player2Score: player2Card > player1Card ? state.player2Score + gameCard : state.player2Score
+        player1Score: player1Card > player2Card ? state.player1Score + bounty : state.player1Score,
+        player2Score: player2Card > player1Card ? state.player2Score + bounty : state.player2Score
     }
 }
 
@@ -60,3 +69,5 @@ function game() {
 }
 
 game()
+
+export { shuffle, without, endMessage, turnMessage, nextState }
