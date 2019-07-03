@@ -134,4 +134,4 @@ map([1, 2, 3, 4, 5, 6, 8, 9], x => 2*x) // [2, 4, 6, 8, 10, 12, 14, 16, 18]
 filter([1, 2, 3, 4, 5, 6, 7, 8, 9], x => x % 2 === 0) // [2, 4, 6, 8]
 ```
 
-Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. Ce sont des __higher order functions__ que l'on peut utiliser avec des __closures__.
+Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. Ce sont des __higher order functions__ que l'on peut utiliser avec des __fonctions anonymes__.
