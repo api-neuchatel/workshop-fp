@@ -99,7 +99,7 @@ stream.next() // { value: 2, next: Stream.init(3, x => x + 1) }
 stream.next().next() // { value: 3, next: Stream.init(4, x => x + 1) }
 // ...
 ```
-Notez que dans notre objet `Stream`, `next` est en fait une fonction qui n'a __pas encore été évaluée__. Ceci permet de calculer la prochaine valeur du stream au bon vouloir de l'utilisateur, __à l'extérieur__ de l'objet.
+Notez que dans notre objet `Stream`, `next` est en fait une fonction qui n'a __pas encore été évaluée__. Ceci permet de calculer la prochaine valeur du stream au bon vouloir de l'utilisateur, __à l'extérieur__ de l'objet. Si on évaluait `next` dans l'objet `Stream`, créer un stream se solderait par une erreur de mémoire, puisque tous les éléments seraient calculés les uns après les autres immédiatement.
 
 Dès lors, on peut implémenter une fonction `take`:
 
