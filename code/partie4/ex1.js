@@ -20,6 +20,6 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
  * Reduces the values of the array using f.
  * Type: [A] => (B, [A]) => B
  */
-let reduce = xs => f => [] // TODO
+let reduce = xs => f => null // TODO
 
-module.exports = reduce
+export { reduce }
