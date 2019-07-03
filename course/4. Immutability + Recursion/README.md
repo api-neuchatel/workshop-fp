@@ -50,3 +50,36 @@ Ces deux implémentations souffrent de 3 désavantages majeurs:
 - Elles ne sont pas __faciles à vérifier__. Une autre méthode pour assurer le bon fonctionnement de programmes est l'analyse statique du code. En bref, on passe le code dans un autre programme qui peut démontrer ou non mathématiquement son exactitude. Ces implémentations manquent de __structure__ ce qui rend leur analyse statique difficile.
 
 La récursion permet de résoudre élégamment ces trois problèmes en une fois.
+
+### Listes récursives
+Afin de transformer les fonctions précédentes en fonctions récursives, une première étape est de pouvoir représenter les tableaux comme des structures de données récursives. Ceci n'est pas obligatoire, mais permet d'écrire du code beaucoup plus lisible.
+
+En effet, les tableaux indexés n'ont par nature aucune structure récursive. Itérer sur un tableau se fait par incrément d'indices. Considérons maintenant une conceptuellement récursive des tableaux. Supposons que l'on travaille sur un tableau contenant des éléments de type `A` (par exemple des entiers, des strings, etc...). Appelons le premier élément de ce tableau la tête (`head`). Il s'agit d'un élément de type `A`. Le reste du tableau est appelé la queue (`tail`) et est de type `[A]`. 
+
+Similairement, la queue du tableau est elle-même un tableau... qui contient également une tête et une queue. Cette queue est aussi un tableau qui contient elle-même une nouvelle tête et une nouvelle queue, etc... Ce schéma se répète jusqu'à ce que la nouvelle queue ainsi créée soient en fait une liste vide.
+
+Définissons à présent deux fonctions qui permettent de représenter un tableau standard sous la forme d'un tableau récursif.
+
+```js
+// Type: [A] => A
+let head = xs => xs[0]
+
+// Type: [A] => [A]
+let tail = xs => xs.slice(1)
+
+let numbers = [1, 2, 3, 4, 5]
+head(numbers) // 1
+tail(numbers) // [2, 3, 4, 5]
+head(tail(numbers)) // 2
+tail(tail(numbers)) // [3, 4, 5]
+```
+
+De plus, nous aurons besoin d'une function de composition qui permette d'ajouter un élément `x` au début d'un tableau `xs`.
+
+```js
+// Type: A => [A] => [A]
+let prepend = x => xs => x === null ? xs : [x].concat(xs)
+
+prepend(0)([1, 2, 3, 4]) // [0, 1, 2, 3, 4]
+prepend(null)([1, 2, 3, 4]) // [1, 2, 3, 4]
+```
