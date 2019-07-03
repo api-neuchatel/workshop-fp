@@ -73,7 +73,7 @@ Les __closures__ sont des fonctions dont l'environnement d'exécution leur est p
 ```js
 let people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
 
-// Type: (Int) => String
+// Type: Int => String
 let personneById = id => personnes[id];
 personneById(2) // "XAVIER"
 ```
