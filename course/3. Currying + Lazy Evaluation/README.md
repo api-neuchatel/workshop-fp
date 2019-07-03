@@ -65,18 +65,18 @@ for(i = 0; i < MAX_VALUE; i++) {
 }
 ```
 
-Bien sûr, ce n'est ni efficace au niveau de la mémoire et encore moins au niveau du temps d'exécution. Une solution bien plus élégante serait de pouvoir définir une valeur de départ ainsi qu'une fonction qui permette de calculer la prochaine valeur du stream à partir de la valeur précédente. Par exemple, on aimerait pouvoir écrire:
+Bien sûr, ce n'est ni efficace au niveau de la mémoire et encore moins au niveau du temps d'exécution. Une solution bien plus élégante serait de pouvoir définir une valeur de départ ainsi qu'une fonction qui permette de calculer la prochaine valeur du stream à partir de la valeur précédente. Par exemple, on aimerait pouvoir écrire (notez le currying):
 
 ```js
-let stream = Stream(0, x => x + 1) // 0, 1, 2, 3, ... (infini!)
+let stream = Stream.init(0)(x => x + 1) // 0, 1, 2, 3, ... (infini!)
 
-stream.take(5) // [0, 1, 2, 3, 4]
-stream.map(x => 2*x) // 0, 2, 4, 6, ... (infini!)
-stream.filter(x => isPrime(x)) // 2, 3, 5, 7, ... (infini!)
-stream.takeUntil(x => 2*x >= 12) // [0, 1, 2, 3, 4, 5, 6]
+Stream.take(stream)(5) // [0, 1, 2, 3, 4]
+Stream.map(stream)(x => 2*x) // 0, 2, 4, 6, ... (infini!)
+Stream.filter(stream)(x => isPrime(x)) // 2, 3, 5, 7, ... (infini!)
+Stream.takeUntil(stream)(x => 2*x >= 12) // [0, 1, 2, 3, 4, 5, 6]
 ```
 
-La force de cet outil est qu'on peut alors partir d'un stream __infini__, lui appliquer des modifications de notre choix à l'aide de `map` et `filter`, puis récupérer les valeurs que l'on souhaite dans un tableau de taille finie. Par exemple, pour récupérer les nombres premiers plus petits que 100: `stream.filter(isPrime).takeUntil(x => x >= 100)`.
+La force de cet outil est qu'on peut alors partir d'un stream __infini__, lui appliquer des modifications de notre choix à l'aide de `map` et `filter`, puis récupérer les valeurs que l'on souhaite dans un tableau de taille finie. Par exemple, pour récupérer les nombres premiers plus petits que 100: `Stream.takeUntil(Stream.filter(stream)(isPrime))(x => x >= 100)`.
 
 En réalité, l'implémentation d'un objet __stream__ comme ceci en Javascript n'est pas si compliquée.
 
