@@ -23,7 +23,7 @@ En pratique, on aime définir des fonctions dont le comportement dépend uniquem
 
 Voici quelques exemples de fonctions sans effets de bord:
 ```js
-// Type: Double => Double
+// Type: Double, Double => Double
 function add(x, y) {
   return x + y
 }
