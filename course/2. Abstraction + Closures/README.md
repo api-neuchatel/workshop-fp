@@ -68,7 +68,7 @@ Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est trè
 Plus sur l'évaluation partielle en partie 3!
 
 ## 2.4: Closures
-Les __closures__ sont des fonctions dont l'environnement d'exécution leur est propre. Contrairement aux lambdas, elles peuvent interagir avec d'autres membres qui ne lui sont pas nécessairement passés en paramètre.
+Les __closures__ sont des fonctions dont l'environnement d'exécution leur est propre. Contrairement aux lambdas, elles peuvent interagir avec d'autres membres qui ne leur sont pas nécessairement passés en paramètre.
 
 ```js
 let people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
