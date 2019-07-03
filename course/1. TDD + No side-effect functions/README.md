@@ -1,7 +1,15 @@
 # Partie 1: Test Driven Development (TDD) et No side-effect Functions
 
 ## 1.1: TDD
-__TODO__
+Assurer le bon fonctionnement de logiciels est un enjeu incontournable du développement. Au fil des années, différents mécanismes ont été implémentés et testés, tous ayant leurs forces et faiblesses. __TDD__ est une variation des tests unitaires classiques à la différence près que l'écriture des tests se fait *avant* l'écriture du code.
+
+Au lieu d'écrire des dizaines, voire centaines de lignes de code, puis de les tester à la fin (aheum...), on commence par écrire les tests de fonctionalité des classes et fonctions que l'on doit implémenter, puis on s'attaque au code à proprement parler. L'idée est de faire passer progressivement les batteries de test écrites au préalable.
+
+En pratique, cela se traduit positivement. Notamment car,
+- En général TDD permet d'atteindre un très bon niveau de coverage.
+- TDD force les développeurs à concevoir les fonctionnalités de leur code avant l'implémentation. Le code qui est ensuite produit est en général de meilleure qualité, plus facilement maintenable et facile à comprendre.
+
+Dans le cadre de ce workshop, nous reprenons l'idée de TDD lors des différents exercices qui vous seront proposés. En effet, ils seront fournis avec leurs batteries de tests respectifs. Votre but sera alors de réaliser les implémentations demandées de telle sorte à passer tous les tests.
 
 ## 1.2: No side-effect Functions
 En programmation fonctionnelle, on évite au maximum les effets de bord.
@@ -11,11 +19,11 @@ Selon Wikipedia:
 
 Plus simplement, une fonction à effet de bords est une fonction qui modifie l'état global d'un programme. Ceci comprend la modification de variables extérieures, l'écriture dans des fichiers, une base de données, les interactions au clavier, etc...
 
-En pratique, on aime définir des fonctions dont le comportement dépend uniquement de ses paramètres. Comme nous le verrons plus tard, ceci permet une grande composabilité des fonctions et facilite la compréhension des programmes grâce à une complexité moindre. En effet, les programmes fonctionnels ne contiennent quasiment pas d'état à proprement parler.
+En pratique, on aime définir des fonctions dont le comportement dépend uniquement de ses paramètres. De telles fonctions sont dites __pures__. Comme nous le verrons plus tard, ceci permet une grande composabilité des fonctions et facilite la compréhension des programmes grâce à une complexité moindre. En effet, les programmes fonctionnels ne contiennent quasiment pas d'état à proprement parler.
 
 Voici quelques exemples de fonctions sans effets de bord:
 ```js
-// Type: Double => Double
+// Type: Double, Double => Double
 function add(x, y) {
   return x + y
 }
