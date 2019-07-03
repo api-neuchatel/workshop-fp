@@ -94,11 +94,12 @@ let Stream = {
 Décortiquons le code précédent. On voit qu'un stream n'est en fait rien d'autre qu'un tuple de deux éléments: la valeur courante du stream, ainsi qu'une __fonction__ qui permet de calculer l'élément suivant, qui n'est rien d'autre qu'un stream lui-même ayant `f(x)` comme valeur et `f` comme fonction d'incrément. Par exemple:
 
 ```js
-let stream = Stream.init(1, x => x + 1) // { value: 1, next: Stream.init(2, x => x + 1) }
+let stream = Stream.init(1)(x => x + 1) // { value: 1, next: Stream.init(2, x => x + 1) }
 stream.next() // { value: 2, next: Stream.init(3, x => x + 1) }
 stream.next().next() // { value: 3, next: Stream.init(4, x => x + 1) }
 // ...
 ```
+Notez que dans notre objet `Stream`, `next` est en fait une fonction qui n'a __pas encore été évaluée__. Ceci permet de calculer la prochaine valeur du stream au bon vouloir de l'utilisateur, __à l'extérieur__ de l'objet.
 
 Dès lors, on peut implémenter une fonction `take`:
 
