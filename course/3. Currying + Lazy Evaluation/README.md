@@ -1,7 +1,7 @@
 # Partie 3: Currying et Lazy Evaluation
 
 ## 3.1: Currying
-En partie 2, nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappelle, nous avions pris l'exemple suivant:
+En partie 2, nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappel, nous avions pris l'exemple suivant:
 
 ```js
 function greet(gender) {
