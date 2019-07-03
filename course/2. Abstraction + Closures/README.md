@@ -33,7 +33,7 @@ function even(numbers) {
 Encore une fois... que ferait-on si on voulait filter les nombres divibles par 3 ou selon un __prédicat quelconque__? En plus, on constate que le code des deux fonctions `double` et `even` est assez similaire au final. La programmation fonctionnelle apporte des solutions élégantes pour palier à ces problèmes.
 
 ## 2.2: Functions as First Class Citizen
-Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelles valeurs. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
+Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelle valeur. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
 
 ```js
 // Type: Double => Double
