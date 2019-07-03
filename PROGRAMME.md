@@ -4,7 +4,7 @@
   - [ ] Arnaud - Introduction
   - [x] Xavier - Partie 1 (Théorie)
   - [ ] Xavier - Partie 1 (Pratique)
-  - [X] Xavier - Partie 2 (Théorie
+  - [X] Xavier - Partie 2 (Théorie)
   - [x] Arnaud - Partie 2 (Pratique)
   - [x] Xavier - Partie 3 (Théorie)
   - [x] Arnaud - Partie 3 (Pratique)
