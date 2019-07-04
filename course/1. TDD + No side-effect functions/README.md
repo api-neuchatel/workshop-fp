@@ -1,9 +1,9 @@
 # Partie 1: Test Driven Development (TDD) et No side-effect Functions
 
 ## 1.1: TDD
-Assurer le bon fonctionnement de logiciels est un enjeu incontournable du développement. Au fil des années, différents mécanismes ont été implémentés et testés, tous ayant leurs forces et faiblesses. __TDD__ est une variation des tests unitaires classiques à la différence près que l'écriture des tests se fait *avant* l'écriture du code.
+Assurer le bon fonctionnement de logiciels est un enjeu incontournable du développement. Au fil des années, différentes approches de développement ont été mises en place et testées. L'une d'elle, issue de l'Extreme Programming, __TDD__, propose d'écrire les tests unitaires *avant* l'écriture du code.
 
-Au lieu d'écrire des dizaines, voire centaines de lignes de code, puis de les tester à la fin (aheum...), on commence par écrire les tests de fonctionalité des classes et fonctions que l'on doit implémenter, puis on s'attaque au code à proprement parler. L'idée est de faire passer progressivement les batteries de test écrites au préalable.
+Au lieu d'écrire des dizaines, voire centaines de lignes de code, puis de les tester à la fin (aheum...), on commence par écrire les tests de fonctionalités des classes et fonctions que l'on doit implémenter, puis on s'attaque au code à proprement parler. L'idée est de faire passer progressivement les batteries de test écrites au préalable.
 
 En pratique, cela se traduit positivement. Notamment car,
 - En général TDD permet d'atteindre un très bon niveau de coverage.
