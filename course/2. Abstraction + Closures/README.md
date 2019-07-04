@@ -30,13 +30,13 @@ function even(numbers) {
   return tmp
 }
 ```
-Encore une fois... que ferait-on si on voulait filter les nombres divibles par 3 ou selon un __prédicat quelconque__? En plus, on constate que le code des deux fonctions `double` et `even` est assez similaire au final. La programmation fonctionnelle apporte des solutions élégantes pour palier à ce problème.
+Encore une fois... que ferait-on si on voulait filter les nombres divibles par 3 ou selon un __prédicat quelconque__? En plus, on constate que le code des deux fonctions `double` et `even` est assez similaire au final. La programmation fonctionnelle apporte des solutions élégantes pour palier à ces problèmes.
 
 ## 2.2: Functions as First Class Citizen
-Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelles valeurs. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
+Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelle valeur. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
 
 ```js
-// Type: Double => Double
+// Type: Double, Double => Double
 let add = function(x, y) { return x + y }
 
 // Type: (Double, Double, Double => Double) => Double
@@ -65,15 +65,15 @@ function greet(gender) {
 Dans ce cas, `greet("Mr")` retourne une fonction qui prend deux paramètres (`firstname` et `lastname`).
 Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonctions. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
 
-Plus sur l'évaluation partielle en Partie 3!
+Plus sur l'évaluation partielle en partie 3!
 
 ## 2.4: Closures
-Les __closures__ sont des lambda dont l'environnement d'exécution leur est propre.
+Les __closures__ sont des fonctions dont l'environnement d'exécution leur est propre. Contrairement aux lambdas, elles peuvent interagir avec d'autres membres qui ne leur sont pas nécessairement passés en paramètre.
 
 ```js
 let people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
 
-// Type: (Int) => String
+// Type: Int => String
 let personneById = id => personnes[id];
 personneById(2) // "XAVIER"
 ```
@@ -134,4 +134,4 @@ map([1, 2, 3, 4, 5, 6, 8, 9], x => 2*x) // [2, 4, 6, 8, 10, 12, 14, 16, 18]
 filter([1, 2, 3, 4, 5, 6, 7, 8, 9], x => x % 2 === 0) // [2, 4, 6, 8]
 ```
 
-Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. Ce sont des __higher order functions__ que l'on peut utiliser avec des __closures__.
+Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. Ce sont des __higher order functions__ que l'on peut utiliser avec des __fonctions anonymes__.

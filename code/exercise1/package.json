@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --require @babel/register"
+    "test": "mocha --watch --require @babel/register"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.4.5",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
     "mocha": "^6.1.4"

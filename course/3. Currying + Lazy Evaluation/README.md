@@ -1,7 +1,7 @@
 # Partie 3: Currying et Lazy Evaluation
 
 ## 3.1: Currying
-En partie 2, nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappelle, nous avions pris l'exemple suivant:
+En partie 2, nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappel, nous avions pris l'exemple suivant:
 
 ```js
 function greet(gender) {
@@ -65,18 +65,18 @@ for(i = 0; i < MAX_VALUE; i++) {
 }
 ```
 
-Bien sûr, ce n'est ni efficace au niveau de la mémoire et encore moins au niveau du temps d'exécution. Une solution bien plus élégante serait de pouvoir définir une valeur de départ ainsi qu'une fonction qui permette de calculer la prochaine valeur du stream à partir de la valeur précédente. Par exemple, on aimerait pouvoir écrire:
+Bien sûr, ce n'est ni efficace au niveau de la mémoire et encore moins au niveau du temps d'exécution. Une solution bien plus élégante serait de pouvoir définir une valeur de départ ainsi qu'une fonction qui permette de calculer la prochaine valeur du stream à partir de la valeur précédente. Par exemple, on aimerait pouvoir écrire (notez le currying):
 
 ```js
-let stream = Stream(0, x => x + 1) // 0, 1, 2, 3, ... (infini!)
+let stream = Stream.init(0)(x => x + 1) // 0, 1, 2, 3, ... (infini!)
 
-stream.take(5) // [0, 1, 2, 3, 4]
-stream.map(x => 2*x) // 0, 2, 4, 6, ... (infini!)
-stream.filter(x => isPrime(x)) // 2, 3, 5, 7, ... (infini!)
-stream.takeUntil(x => 2*x >= 12) // [0, 1, 2, 3, 4, 5, 6]
+Stream.take(stream)(5) // [0, 1, 2, 3, 4]
+Stream.map(stream)(x => 2*x) // 0, 2, 4, 6, ... (infini!)
+Stream.filter(stream)(x => isPrime(x)) // 2, 3, 5, 7, ... (infini!)
+Stream.takeUntil(stream)(x => 2*x >= 12) // [0, 1, 2, 3, 4, 5, 6]
 ```
 
-La force de cet outil est qu'on peut alors partir d'un stream __infini__, lui appliquer des modifications de notre choix à l'aide de `map` et `filter`, puis récupérer les valeurs que l'on souhaite dans un tableau de taille finie. Par exemple, pour récupérer les nombres premiers plus petits que 100: `stream.filter(isPrime).takeUntil(x => x >= 100)`.
+La force de cet outil est qu'on peut alors partir d'un stream __infini__, lui appliquer des modifications de notre choix à l'aide de `map` et `filter`, puis récupérer les valeurs que l'on souhaite dans un tableau de taille finie. Par exemple, pour récupérer les nombres premiers plus petits que 100: `Stream.takeUntil(Stream.filter(stream)(isPrime))(x => x >= 100)`.
 
 En réalité, l'implémentation d'un objet __stream__ comme ceci en Javascript n'est pas si compliquée.
 
@@ -94,11 +94,12 @@ let Stream = {
 Décortiquons le code précédent. On voit qu'un stream n'est en fait rien d'autre qu'un tuple de deux éléments: la valeur courante du stream, ainsi qu'une __fonction__ qui permet de calculer l'élément suivant, qui n'est rien d'autre qu'un stream lui-même ayant `f(x)` comme valeur et `f` comme fonction d'incrément. Par exemple:
 
 ```js
-let stream = Stream.init(1, x => x + 1) // { value: 1, next: Stream.init(2, x => x + 1) }
+let stream = Stream.init(1)(x => x + 1) // { value: 1, next: Stream.init(2, x => x + 1) }
 stream.next() // { value: 2, next: Stream.init(3, x => x + 1) }
 stream.next().next() // { value: 3, next: Stream.init(4, x => x + 1) }
 // ...
 ```
+Notez que dans notre objet `Stream`, `next` est en fait une fonction qui n'a __pas encore été évaluée__. Ceci permet de calculer la prochaine valeur du stream au bon vouloir de l'utilisateur, __à l'extérieur__ de l'objet. Si on évaluait `next` dans l'objet `Stream`, créer un stream se solderait par une erreur de mémoire, puisque tous les éléments seraient calculés les uns après les autres immédiatement.
 
 Dès lors, on peut implémenter une fonction `take`:
 

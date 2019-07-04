@@ -1,16 +1,16 @@
 # Workshop Functional Programming
 
 ## TODO
-  - []  Arnaud - Installation + contrôle via code (test installation)
+  - [ ]  Arnaud - Installation + contrôle via code (test installation)
   - [ ] Arnaud - Introduction
   - [x] Xavier - Partie 1 (Théorie)
-  - [ ] Xavier - Partie 1 (Pratique)
-  - [X] Xavier - Partie 2 (Théorie) - Abstraction
-  - [x] Arnaud - Partie 2 (Pratique) - First class functions
+  - [x] Xavier - Partie 1 (Pratique)
+  - [X] Xavier - Partie 2 (Théorie)
+  - [x] Arnaud - Partie 2 (Pratique)
   - [x] Xavier - Partie 3 (Théorie)
   - [x] Arnaud - Partie 3 (Pratique)
-  - [ ] Xavier - Partie 4 (Théorie)
-  - [ ] Arnaud - Partie 4 (Pratique)
+  - [x] Xavier - Partie 4 (Théorie)
+  - [x] Arnaud - Partie 4 (Pratique)
   - [ ] Arnaud - Partie 5 (Platformer)
 
 ## Avant le workshop
