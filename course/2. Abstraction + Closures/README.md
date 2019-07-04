@@ -68,7 +68,7 @@ Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est trè
 Plus sur l'évaluation partielle en partie 3!
 
 ## 2.4: Closures
-Les __closures__ sont des fonctions qui ferment sur leur environnement d'exécution. Une lambda qui interagit avec des membres qui ne lui est pas nécessairement passés en paramètre devient alors une __closure__
+Les __closures__ sont des fonctions qui ferment sur leur environnement d'exécution. Une lambda qui interagit avec des membres qui ne lui sont pas nécessairement passés en paramètre devient alors une __closure__
 
 ```js
 const people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
