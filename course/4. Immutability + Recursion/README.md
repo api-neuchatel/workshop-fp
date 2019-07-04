@@ -17,7 +17,7 @@ La raison à cela est que `alice` et `bob` utilisent le même objet `birthDate` 
 
 L'__immuabilité__ permet de palier élégament à ce problème. De manière générale, une valeur immuable signifie qu'une fois écrite en mémoire, elle ne peut plus être modifiée, ce qui n'implique pas pour autant qu'on ne peut rien en faire. Pour la modifier, on en crée simplement une copie. Dans ce cas, si au lieu de faire `birthDate.setFullYear(2000)` on avait fait `birthDate = new Date(2000, birthDate.getMonth(), birthDate.getDay())`, `alice` et `bob` travailleraient chacun avec leur propre copie de `birthDate` et le problème serait résolu.
 
-En programmation fonctionnelle, on évite également au maximum les valeurs muables, ce qui permet une meilleure lisibilité du code et facilite le raisonnement à propos du programme. Cette notion est liée à celle des fonctions sans effets de bords. En effet une fonction sans side effects ne peut pas travailler avec des valeurs muables.
+En programmation fonctionnelle, on évite également au maximum les valeurs mubles, ce qui permet une meilleure lisibilité du code et facilite le raisonnement à propos du programme. Cette notion est liée à celle des fonctions sans effets de bords. En effet une fonction sans side effects ne peut pas travailler avec des valeurs muables.
 
 ## 4.2: Récursion
 Revenons sur nos implémentations de `map` et de `filter` sur les tableaux. En partie 2, nous avons écrit ceci:
@@ -153,6 +153,13 @@ def filter(xs: List[Int], p: Int => Boolean): List[Int] = xs match {
   case Nil => Nil
   case y :: ys => if(p(y)) y :: filter(ys, p) else filter(ys, p)
 }
+```
+
+```clojure
+(defn map [f coll]
+  (if (seq coll)
+      (cons (f (first coll)) (map f (rest coll)))
+      nil))
 ```
 
 Ici, `Nil` désigne la liste vide et l'opérateur `::` est l'équivalent de notre `prepend`. Notez la syntaxte du `match ... case`, appelé pattern-matching qui facilite largement la lecture.
