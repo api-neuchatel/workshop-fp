@@ -1,6 +1,8 @@
 import { fromEvent, interval } from 'baconjs';
 import math from 'mathjs';
 
+const initialPosition = 500;
+
 let initialState = {
     player: {
         position: [0,100],
@@ -14,7 +16,7 @@ let initialState = {
         }
     },
     world : {
-        position: [500, 215]
+        position: [initialPosition, 215]
     },
     monsters: [{position: [300,100], size: [16,24]},
                {position: [500,100], size: [16,24]},
@@ -53,10 +55,10 @@ function computeStates(states, event) {
 
     if(event.direction.includes('left')) {
         newState.player.position = math.add(position,[-5,0]);
-        //newState.world.position = math.add(newState.world.position, [-10,-10]);
+        newState.world.position = math.add(newState.world.position, [-10,0]);
     } else if(event.direction.includes('right')) {
         newState.player.position = math.add(position,[5,0]);
-        //newState.world.position = math.add(newState.world.position, [10,10]);
+        newState.world.position = math.add(newState.world.position, [10,0]);
     }
 
     if(event.direction.includes('top') && newState.player.jumpingSince<150) {
@@ -180,7 +182,7 @@ function draw(state) {
     const size = state.player.size;
 
     ctx.clearRect(0,0,game.width,game.height);
-    ctx.drawImage(world,0,200,state.world.position[0],state.world.position[1],0,0,game.width,game.height);
+    ctx.drawImage(world,0+state.world.position[0]-initialPosition,200,state.world.position[0],state.world.position[1],0,0,game.width,game.height);
     ctx.drawImage(image,sprite.x,10,size[0],size[1],position[0],position[1],16,24);
 
     state.monsters.forEach(m => {
