@@ -30,17 +30,17 @@ function even(numbers) {
   return tmp
 }
 ```
-Encore une fois... que ferait-on si on voulait filter les nombres divibles par 3 ou selon un __prédicat quelconque__? En plus, on constate que le code des deux fonctions `double` et `even` est assez similaire au final. La programmation fonctionnelle apporte des solutions élégantes pour palier à ces problèmes.
+Encore une fois... que ferait-on si on voulait filtrer les nombres divibles par 3 ou selon un __prédicat quelconque__? En plus, on constate que le code des deux fonctions `double` et `even` est assez similaire au final. La programmation fonctionnelle apporte des solutions élégantes pour palier à ces problèmes.
 
 ## 2.2: Functions as First Class Citizen
 Dans certains langages (dont les langages fonctionnels mais aussi d'autres, comme Javascript), on considère les fonctions comme *first class citizen*. Cela signifie qu'elles peuvent être traitées comme n'importe quelle valeur. En particulier, on peut __mettre des fonctions dans des variables__ ou encore les __passer en paramètre à d'autres fonctions__.
 
 ```js
 // Type: Double, Double => Double
-let add = function(x, y) { return x + y }
+const add = function(x, y) { return x + y }
 
 // Type: (Double, Double, Double => Double) => Double
-let apply = function(a, b, f) { return f(a, b) }
+const apply = function(a, b, f) { return f(a, b) }
 
 add(2, 5) // 5
 apply(2, 3, add) // 5
@@ -68,13 +68,13 @@ Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est trè
 Plus sur l'évaluation partielle en partie 3!
 
 ## 2.4: Closures
-Les __closures__ sont des fonctions dont l'environnement d'exécution leur est propre. Contrairement aux lambdas, elles peuvent interagir avec d'autres membres qui ne leur sont pas nécessairement passés en paramètre.
+Les __closures__ sont des fonctions qui ferment sur leur environnement d'exécution. Une lambda qui interagit avec des membres qui ne lui sont pas nécessairement passés en paramètre devient alors une __closure__.
 
 ```js
-let people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
+const people = {1: "ARNAUD", 2: "XAVIER", 3 "DAMIEN"};
 
 // Type: Int => String
-let personneById = id => personnes[id];
+const personneById = id => personnes[id];
 personneById(2) // "XAVIER"
 ```
 ## 2.5: Wrap-up
@@ -134,4 +134,6 @@ map([1, 2, 3, 4, 5, 6, 8, 9], x => 2*x) // [2, 4, 6, 8, 10, 12, 14, 16, 18]
 filter([1, 2, 3, 4, 5, 6, 7, 8, 9], x => x % 2 === 0) // [2, 4, 6, 8]
 ```
 
-Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. Ce sont des __higher order functions__ que l'on peut utiliser avec des __fonctions anonymes__.
+Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. 
+
+Ce sont des __higher order functions__ que l'on peut utiliser avec des __fonctions anonymes__.

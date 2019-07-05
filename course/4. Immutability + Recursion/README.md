@@ -141,7 +141,7 @@ Qu'a-t-on gagné?
 - Nous avons gagné énormément en structure! Plus besoin de gérer une boucle et un état (le compteur). Le code s'exprime comme une répétition de plusieurs fois la même opération pure, simplement évaluée avec des paramètres différents. Ceci rend l'analyse statique beaucoup plus efficace.
 
 ## 4.3: Pour aller plus loin
-Javascript n'a pas été conçu pour que la récursion y soit agréable, dès lors l'écriture de ces fonctions n'est pas très lisible. D'autre langages prévoient une syntaxe bien plus élégante pour l'écriture de fonctions récursives, par exemple Scala (ici pour des listes de type `A = Int`:
+Javascript n'a pas été conçu pour que la récursion y soit agréable, dès lors l'écriture de ces fonctions n'est pas très lisible. D'autre langages prévoient une syntaxe bien plus élégante pour l'écriture de fonctions récursives, par exemple Scala (ici pour des listes de type `A = Int`):
 
 ```scala
 def map(xs: List[Int], f: Int => Int): List[Int] = xs match {
@@ -156,3 +156,19 @@ def filter(xs: List[Int], p: Int => Boolean): List[Int] = xs match {
 ```
 
 Ici, `Nil` désigne la liste vide et l'opérateur `::` est l'équivalent de notre `prepend`. Notez la syntaxte du `match ... case`, appelé pattern-matching qui facilite largement la lecture.
+
+En Clojure, on peut écrire:
+
+```clojure
+(defn map [f coll]
+  (if (seq coll)
+      (cons (f (first coll)) (map f (rest coll)))
+
+(defn filter [p coll]
+  (if (seq coll)
+      (if (p (first coll))
+        (cons (first coll) (filter p (rest coll)))
+        (filter p (rest coll)))))
+```
+
+L'équivalent de notre `prepend` est ici `cons`.
