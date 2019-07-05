@@ -1,7 +1,7 @@
 # Workshop Functional Programming
 
 Merci pour votre intérêt et votre participation à ce workshop.
-Afin que nous soyons le plus efficace durant les 3 heures qui durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
+Afin de pouvoir préfiter pleinement des 3 heures que durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
 
 Vous trouverez ci-dessous l'installation des outils à effectuer pour les différents OS, nous comptons sur vous !
 
@@ -55,3 +55,5 @@ Tester l'installation
 ```bash
 cd workshop-fp/code/exercise0 && npm install && npm test
 ```
+
+### macOS
