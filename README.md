@@ -24,7 +24,35 @@ cd workshop-fp/code/exercise0 && npm install && npm test
 
 ### MacOS
 
-TODO
+1. Installez Xcode depuis le Mac App Store (comptez environ 1h). Une fois fait, ouvrez Xcode et laissez-le télécharger les composants additionels. Xcode contient tous les outils nécessaires à la compilation de vos programmes pour votre Mac ainsi que le logiciel de versioning Git.
+
+2. Installez Homebrew en utilisant la commande suivante dans un Terminal:
+
+    ```bash
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+    
+    Homebrew est un package manager pour Mac, similaire à APT pour les distributions Linux Debian.
+
+3. Installez Node et NPM : `brew install node`
+
+4. Vérifiez votre installation : `node -v` et `npm -v` doivent afficher les versions respectives de Node et NPM que vous venez d'installer.
+
+5. Installez Visual Studio Code: https://code.visualstudio.com/Download
+
+6. Clonez ce repository à l'emplacement de votre choix
+
+    ```bash
+    git clone https://github.com/association-api/workshop-fp
+    ```
+    
+7. Testez votre installation
+
+    ```bash
+    cd workshop-fp/code/exercise0 && npm install && npm test
+    ```
+    
+    Si tout va bien, vous devriez voir un message à l'écran vous indiquant que vous avez passé le test `2 + 2 = 4`.
 
 ### Linux
 
