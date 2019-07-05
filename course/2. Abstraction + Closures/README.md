@@ -136,5 +136,4 @@ filter([1, 2, 3, 4, 5, 6, 7, 8, 9], x => x % 2 === 0) // [2, 4, 6, 8]
 
 Le gain est que le comportement de `map` et `filter` peut maintenant très facilement être adapté à toutes les circonstances et de manière très lisible. 
 
-# Je suis pas d'accord avec cette phrase.. En l'état, `map` et `filter` ne sont pas des high order functions, ou je me trompe?
 Ce sont des __higher order functions__ que l'on peut utiliser avec des __fonctions anonymes__.
