@@ -1,59 +1,48 @@
 # Workshop Functional Programming
 
 Merci pour votre intérêt et votre participation à ce workshop.
-Afin de pouvoir préfiter pleinement des 3 heures que durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
+Afin que nous soyons le plus efficace durant les 3 heures qui durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
 
-Vous trouverez ci-dessous l'installation des outils à effectuer pour les différents OS, nous comptons sur vous !
+Vous trouverez ci-dessous les outils à installer pour les différents systèmes d'exploitation, nous comptons sur vous !
 
 ## Installation
 
 ### Windows
 
+1. Installer Git : https://git-scm.com/download/win
+2. Installer Node/NPM : https://nodejs.org/en/download/
+3. Installer Visual Studio Code : https://code.visualstudio.com/  
+Puis, au sein de Visual Studio Code (Terminal -> New Terminal), lancez les commandes ci-dessous :
+4. Cloner le repository à l'emplacement de votre choix
+```bash
+git clone https://github.com/association-api/workshop-fp
+```
+5. Tester l'installation
+```bash
+cd workshop-fp/code/exercise0 && npm install && npm test
+```
+
+### MacOS
+
+TODO
+
 ### Linux
 
-Installation de Visual Studio : https://code.visualstudio.com/
-Puis, au sein de Visual Studio Code, lancez les commandes ci-dessous :
-```
-Terminal -> New Terminal
-```
+1. Installer Visual Studio Code : https://code.visualstudio.com/  
+Puis, au sein de Visual Studio Code (Terminal -> New Terminal), lancez les commandes ci-dessous :
 
-Installation de Node, NPM et Git
+2. Installer Node, NPM et Git
 ```bash
 apt-get install git nodejs npm (Debian)
 yum install git nodejs npm (RPM)
 ```
 
-Cloner le repository à l'emplacement de votre choix
+3. Cloner le repository à l'emplacement de votre choix
 ```bash
 git clone https://github.com/association-api/workshop-fp
 ```
 
-Tester l'installation
+4. Tester l'installation
 ```bash
 cd workshop-fp/code/exercise0 && npm install && npm test
 ```
-
-### Linux (RPM)
-
-Installation de Visual Studio : https://code.visualstudio.com/
-Puis, au sein de Visual Studio Code, lancez les commandes ci-dessous :
-```
-Terminal -> New Terminal
-```
-
-Installation de Node, NPM et Git
-```bash
-
-```
-
-Cloner le repository à l'emplacement de votre choix
-```bash
-git clone https://github.com/association-api/workshop-fp
-```
-
-Tester l'installation
-```bash
-cd workshop-fp/code/exercise0 && npm install && npm test
-```
-
-### macOS
