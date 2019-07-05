@@ -36,7 +36,7 @@ cd workshop-fp/code/exercise0 && npm install && npm test
 
 3. Installez Node et NPM : `brew install node`
 
-4. Vérifiez votre installation : `node -v` et `npm -v` doivent afficher les versions respectives de Node et NPM que vous venez d'installer.
+4. Vérifiez votre installation : `node -v` et `npm -v` doivent afficher les versions respectives de Node (`v12.5.0`) et NPM (`6.9.0`) que vous venez d'installer.
 
 5. Installez Visual Studio Code: https://code.visualstudio.com/Download
 
