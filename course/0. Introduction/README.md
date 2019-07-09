@@ -24,7 +24,7 @@ Les deux chemins ont été suivis, ce qui a donné naissance dans la catégorie 
 *  Javascript/Ruby/Python (1991-1995)
 *  C# (2002)
 
-Les langages basés sur les mathématiques, donc du plus haut niveau ont également évolués au fil des années :
+Les langages basés sur les mathématiques, donc de plus haut niveau ont également évolués au fil des années :
 * LISP (1958)
 * Scheme (1970)
 * Prolog (1972)
@@ -34,7 +34,7 @@ Les langages basés sur les mathématiques, donc du plus haut niveau ont égalem
 * Haskell (1990)
 * OCaml (1996)
 
-Chaque abstraction ayant son coût, il est clair qu'à une époque ou la RAM et le CPU étaient chers et en quantités réduites (16Mb RAM-40Mhz en 1990) il n'était pas possible d'envisager de partir dans cette direction. Les langages plus proches du hardware ont donc logiquement pris le dessus par rapport aux langages qui étaient basés sur les mathématiques.
+Chaque abstraction ayant son coût, il est clair qu'à une époque ou la RAM et le CPU étaient chers et en quantités réduites (16Mb RAM-40Mhz en 1990), il n'était pas possible d'envisager de partir dans la seconde direction. Les langages plus proches du hardware ont donc logiquement pris le dessus par rapport aux langages qui étaient basés sur les mathématiques.
 
 ## 1.2 Un retour à la simplicité
 
@@ -52,7 +52,7 @@ Parmi elles, il définit :
 
 ## 1.3 Aucune raison de changer
 
-Malgré les bénéfices que peuvent apporter la programmation fonctionnelle et les évolutions hardware qui permettent aujourd'hui d'utiliser cette approche, il n'y a pas eu de raison de changer la façon dont nous réalisons nos programmes; nous avons aujourd'hui beaucoup de littératures sur les pratiques à adopter afin de développer du logiciel, des retours d'expériences, des personnes formées sur le marché et surtout des applications en production à maintenir.
+Malgré les bénéfices que peuvent apporter la programmation fonctionnelle et les évolutions hardware qui permettent aujourd'hui d'utiliser cette approche, il n'y a pas eu de raison de changer la façon dont nous réalisons nos programmes; nous avons aujourd'hui beaucoup de littératures sur les pratiques à adopter, des retours d'expériences, des personnes formées sur le marché et surtout des applications en production à maintenir.
 
 Il manque encore l'incitation à changer.
 
