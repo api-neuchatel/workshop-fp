@@ -64,4 +64,10 @@ Nous avons besoin d'une abstraction supplémentaire afin de gérer ces probléma
 
 ## 1.5 Tendances aujourd'hui
 
-Si le nombre de coeurs dans nos CPU n'évoluent pas autant qu'espérer à l'époque, le chemin vers la programmation fonctionnelle a été pris dans quasiment tous les langages mainstream (avec plus ou moins de succès).
+Si le nombre de coeurs dans nos CPU n'évoluent pas autant qu'attendu à l'époque, le chemin vers la programmation fonctionnelle a été pris dans quasiment tous les langages mainstream (avec plus ou moins de succès).
+Parmi les "nouveaux" langages que peuvent être F# (2002), Scala (2003), Clojure (2007), Go (2009), Kotlin (2011), Elixir (2012), ELM (2012) et Rust (2015), sept d'entre eux possèdent de fortes influences fonctionnelles. Même dans le cas de Rust qui se veut un langage système, nous retrouvons certains des concepts que nous allons analyser durant ce workshop. Seul Go reste en dehors de cette inspiration.
+
+## 1.6 Javascript
+Durant cette soirée, nous vous proposons de découvrir la programmation fonctionnelle au travers d'un langage qui permet de mettre relativement facilement en pratique ses principes. Le choix de Javascript a été fait afin d'éviter la friction que peut avoir un nouveau langage et ainsi être capable de toucher un maximum de participants.
+
+Nous vous inviterons après ce workshop à vous intéresser à un vrai langage fonctionnel !
