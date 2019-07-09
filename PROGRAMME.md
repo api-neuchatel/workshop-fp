@@ -1,8 +1,8 @@
 # Workshop Functional Programming
 
 ## TODO
-  - [ ]  Arnaud - Installation + contrôle via code (test installation)
-  - [ ] Arnaud - Introduction
+  - [X] Arnaud - Installation + contrôle via code (test installation)
+  - [X] Arnaud - Introduction
   - [x] Xavier - Partie 1 (Théorie)
   - [x] Xavier - Partie 1 (Pratique)
   - [X] Xavier - Partie 2 (Théorie)
