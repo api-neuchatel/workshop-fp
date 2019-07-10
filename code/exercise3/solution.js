@@ -30,7 +30,7 @@ function isPrime(number)
   * 
   * Type: String -> String -> String
   * 
-  * TODO: 1. I can create a function that receives a firstName and returns a function that needs 
+  * TODO: 1. I can create a function that receives a firstName and returns a function that needs a
   * lastName to produce "Hello firstName lastName"
   */
  const helloCurry = firstName => lastName => "Hello " + firstName + " " + lastName  
@@ -95,49 +95,11 @@ const infiniteStreamOfPrimeNumbers = Stream.filter(Stream.init(0)(x => x + 1))(i
   */
 const primeNumbersLessThan2000 = Stream.takeUntil(Stream.filter(Stream.init(0)(x => x + 1))(isPrime))(x => x > 2000);
 
-/**
- * Sum an array arr with an imperative loop and a mutable variable.
- * Type: [Number] -> Number
- * 
- * 1. I can sum the values of an array using an imperative loop and a mutable variable
- */
-export function sumArrayImperativeLoop(arr) {
-    let sum = 0;
-    for(const v of arr) {
-        sum += v;
-    }
-    return sum;
-}
-
-/**
- * Sum an array arr with a recursion using an accumulator sum which starts with 0.
- * Type: ([Number], Number) -> Number
- * 
- * 2. I can sum the values fo an array using recursion
- */
-export function sumArrayRecusion(arr, sum = 0) {
-    if(arr.length === 0) {
-        return sum;
-    }
-    return sumArrayRecusion(arr.slice(1),sum + arr[0]);
-}
-
-/**
- * Sum an array arr with a the reduce function.
- * Type: [Number] -> Number
- * 
- * 3. I can sum the values fo an array using reduce
- */
-export function sumArrayReduce(arr) {
-    return arr.reduce((acc, v) => acc + v, 0);
-}
-
 export {
     helloCurry,
     multiplyCurry,
     multiplyBy4,
     multiplyBy20,
-    infiniteStreamOf1,
     infiniteStreamOfThatDoubleValues,
     infiniteStreamOfPrimeNumbers,
     primeNumbersLessThan2000
