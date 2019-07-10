@@ -22,4 +22,41 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
  */
 let reduce = xs => f => null // TODO
 
-export { reduce }
+
+
+/**
+ * Sum an array arr with an imperative loop and a mutable variable.
+ * Type: [Number] -> Number
+ * 
+ * 1. I can sum the values of an array using an imperative loop and a mutable variable
+ */
+const sumArrayImperativeLoop = (arr) => {
+    let sum = 0;
+    for(const v of arr) {
+        sum += v;
+    }
+    return sum;
+}
+
+/**
+ * Sum an array arr with a recursion using an accumulator sum which starts with 0.
+ * Type: ([Number], Number) -> Number
+ * 
+ * 2. I can sum the values fo an array using recursion
+ */
+const sumArrayRecusion = (arr, sum = 0) => {
+    if(arr.length === 0) {
+        return sum;
+    }
+    return sumArrayRecusion(arr.slice(1),sum + arr[0]);
+}
+
+/**
+ * Sum an array arr with a the reduce function.
+ * Type: [Number] -> Number
+ * 
+ * 3. I can sum the values fo an array using reduce
+ */
+const sumArrayReduce = (arr) => arr.reduce((acc, v) => acc + v, 0);
+
+export { reduce, sumArrayImperativeLoop, sumArrayRecusion, sumArrayReduce }

@@ -1,4 +1,4 @@
-import { reduce } from './ex1';
+import { reduce, sumArrayImperativeLoop, sumArrayRecusion, sumArrayReduce } from './ex1';
 
 const chai = require('chai');
 const should = chai.should();
