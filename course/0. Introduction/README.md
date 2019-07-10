@@ -34,7 +34,7 @@ Les langages basés sur les mathématiques, donc de plus haut niveau ont égalem
 * Haskell (1990)
 * OCaml (1996)
 
-Chaque abstraction ayant son coût, il est clair qu'à une époque ou la RAM et le CPU étaient chers et en quantités réduites (16Mb RAM-40Mhz en 1990), il n'était pas possible d'envisager de partir dans la seconde direction. Les langages plus proches du hardware ont donc logiquement pris le dessus par rapport aux langages qui étaient basés sur les mathématiques.
+Chaque abstraction ayant son coût, il est clair qu'à une époque où la RAM et le CPU étaient chers et en quantités réduites (16Mb RAM-40Mhz en 1990), il n'était pas possible d'envisager de partir dans la seconde direction. Les langages plus proches du hardware ont donc logiquement pris le dessus par rapport aux langages qui étaient basés sur les mathématiques.
 
 ## 1.2 Un retour à la simplicité
 
@@ -43,7 +43,7 @@ En théorie, il est possible de créer exactement les mêmes programmes avec ces
 Rich Hickey dans son talk [Simple Made Easy](https://www.infoq.com/presentations/Simple-Made-Easy/) met en opposition les outils complexes que nous utilisons au quotidien, et les outils plus simples que nous pourrions utiliser.
 
 Parmi elles, il définit :
-- Qu'il est plus simple de travailler avec des **values** qu'avec des **objects**, car ces derniers mélangent la notion de temps, de valeur et d'état
+- Qu'il est plus simple de travailler avec des **values** qu'avec des **objects**, car ces derniers mélangent la notion de temps, de valeur et d'état (lié à la mutabilité)
 - Qu'il est plus simple de travailler avec des **functions** qu'avec des **methods**, car ces dernières sont basées sur des objets
 - Qu'il est plus simple de travailler avec des **managed references** plutôt qu'avec des **variables** afin d'éviter les problèmes de concurrence
 - Qu'il est préférable de disposer du **polymorphism a la carte** (car on aime le polymorphisme), plutôt que d'utiliser l'**inheritance**
@@ -52,7 +52,7 @@ Parmi elles, il définit :
 
 ## 1.3 Aucune raison de changer
 
-Malgré les bénéfices que peuvent apporter la programmation fonctionnelle et les évolutions hardware qui permettent aujourd'hui d'utiliser cette approche, il n'y a pas eu de raison de changer la façon dont nous réalisons nos programmes; nous avons aujourd'hui beaucoup de littératures sur les pratiques à adopter, des retours d'expériences, des personnes formées sur le marché et surtout des applications en production à maintenir.
+Malgré les bénéfices que peuvent apporter la programmation fonctionnelle et les évolutions hardware qui permettent aujourd'hui d'utiliser cette approche, il n'y a pas eu de raison de changer la façon dont nous réalisons nos programmes; nous avons beaucoup de littérature sur les pratiques à adopter, des retours d'expériences, des personnes formées sur le marché et surtout des applications en production à maintenir.
 
 Il manque encore l'incitation à changer.
 
