@@ -22,7 +22,7 @@ function _add(x,y) {
  * TODO : First class functions
  * 1. You can store a function in a variable
  */
-const double = null;
+var double = _double;
 
 /**
  * Double the values of arr according to function f
@@ -32,7 +32,11 @@ const double = null;
  * 2. You can pass a function to another function as parameter
  */
 export function doubleArray(arr, f) {
-    return [];
+    let tmp = [];
+    for(let c of arr) {
+        tmp.push(f(c));
+    }
+    return tmp;
 }
 
 
@@ -44,6 +48,6 @@ export function doubleArray(arr, f) {
  * 1. You can create a function from a function
  * 
  */ 
-const add5 = null;
+var add5 = y => _add(5,y);
 
 export {double, add5};

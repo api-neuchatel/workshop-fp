@@ -19,7 +19,7 @@ const should = chai.should();
 
 describe('First-class functions', function() {
   it('1. I can store a function in a variable', function() {
-    should.not.equal(double, null, "double ne doit pas être null");
+    should.not.equal(double, null, "Et si on stockait la fonction _add dans add?");
     double(2).should.equal(4);
   });
   it('2. I can pass a function to another function as parameter', function() {
@@ -29,7 +29,7 @@ describe('First-class functions', function() {
 
 describe('Higher-order functions', function() {
   it('1. I can create a function from a function', function() {
-    should.not.equal(add5, null, "add5 ne doit pas être null");
+    should.not.equal(add5, null, "add5 doit être une fonction qui retourne une fonction appelant _add en ajoutant 5");
     add5(2).should.equal(7);
   });
 });

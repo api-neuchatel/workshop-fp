@@ -62,7 +62,11 @@ function flat(arr) {
  * 1. I can pass an array and a function to apply a transformation via the map() function
  */
 export function map(arr, f) {
-    return [];
+    let tmp = [];
+    for(let c of arr) {
+        tmp.push(f(c));
+    }
+    return tmp;
 }
 
 
@@ -75,7 +79,13 @@ export function map(arr, f) {
  * 2. I can pass an array and a predicate to filter out items via the filter() function
  */
 export function filter(arr, p) {
-    return [];
+    let tmp = [];
+    for(let c of arr) {
+        if(p(c)) {
+            tmp.push(c);
+        }
+    }
+    return tmp;
 }
 
 /**
@@ -83,10 +93,10 @@ export function filter(arr, p) {
  * Type: Int => Person
  * 
  * TODO:
- * 3. I can create a function that closes over a variable in its environnement, that\' called a closure!
+ * 3. I can create a function that close over a variable in its environnement, that\' called a closure!
  */
 export function findPersonById(id) {
-    return null;
+    return filter(people, p => p.id===id)[0];
 }
 
 /**
@@ -97,7 +107,7 @@ export function findPersonById(id) {
  * 4. I can get people younger than 30'
  */
 export function peopleYoungerThan30() {
-    return [];
+    return filter(people, p => p.age < 30);
 }
 
 /**
@@ -109,7 +119,7 @@ export function peopleYoungerThan30() {
  * 5. I can get two letters acronyms
  */
 export function peopleAcronyms() {
-    return [];
+    return map(people, p => p.name.substr(0,2));
 }
 
 /**
@@ -121,7 +131,7 @@ export function peopleAcronyms() {
  * 6. I can get two letters acronyms in uppercase that starts with D
  */
 export function peopleAcronymsUppercaseStartWithD() {
-    return  [];
+    return filter(map(map(people, p => p.name.substr(0,2)), p => p.toUpperCase()), p => p[0]=='D');
 }
 
 /**
@@ -133,5 +143,5 @@ export function peopleAcronymsUppercaseStartWithD() {
  * 7. I can get all comments for each movie and people
  */
 export function commentsByMovie() {
-    return [];
+    return flat(map(movies, m => map(m.comments, c => ({movie: m.title, name: findPersonById(c.peopleId).name, grade: c.grade}))));
 }
