@@ -1,5 +1,9 @@
 # Partie 3 - Exercice
 
+Cet exercice vous permet de vous familiariser avec le currying (une forme de l'application partielle de fonction) et de la lazy evaluation au travers de Stream.
+
+Commencez par exécuter les traditionnelles commandes :
+
 ```bash
 npm install // Installation des dépendances
 npm test    // Lancement des tests en continu
