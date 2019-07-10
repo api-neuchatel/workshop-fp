@@ -33,7 +33,7 @@ function isPrime(number)
   * TODO: 1. I can create a function that receives a firstName and returns a function that needs 
   * lastName to produce "Hello firstName lastName"
   */
- const helloCurry = null;
+ const helloCurry = firstName => lastName => "Hello " + firstName + " " + lastName  
 
  /**
   * Create a currified function that multiply two values
@@ -42,7 +42,7 @@ function isPrime(number)
   * 
   * TODO: 2. I can create a currified version that multiply 2 values
   */
- const multiplyCurry = null;
+ const multiplyCurry = a => b => a * b;
 
  /**
   * Create a function that returns a value multiply by 4
@@ -51,7 +51,7 @@ function isPrime(number)
   * 
   * TODO: 3. Then I can a function multiplyBy4 using multiplyCurry
   */
- const multiplyBy4 = null;
+ const multiplyBy4 = multiplyCurry(4);
 
  /**
   * Create a function that returns a value multiply by 4
@@ -60,7 +60,7 @@ function isPrime(number)
   * 
   * TODO: 4. Or even multiplyBy20 from the multiplyCurry function
   */
- const multiplyBy20 = null;
+ const multiplyBy20 = multiplyCurry(20);
 
  /**
   * Create an inifinite stream of 1.
@@ -68,7 +68,7 @@ function isPrime(number)
   * 
   * TODO: 1. I can produce an infinite stream that produces 1
   */
-const infiniteStreamOf1 = null;
+const infiniteStreamOf1 = Stream.init(0)(x => 1);
 
 /**
   * Create an inifinite stream that increments the value by 1.
@@ -76,7 +76,7 @@ const infiniteStreamOf1 = null;
   * 
   * TODO: 2. I can produce an infinite stream that double all values
   */
-const infiniteStreamOfThatDoubleValues = null;
+const infiniteStreamOfThatDoubleValues = Stream.map(Stream.init(0)(x => x + 1))(x => x * 2);
 
 /**
   * Create an inifinite stream that increments the value by 1 an filters out each value which is not a prime number
@@ -84,7 +84,7 @@ const infiniteStreamOfThatDoubleValues = null;
   * 
   * TODO: 3. I can produce an infinite stream that produces prime numbers
   */
-const infiniteStreamOfPrimeNumbers = null;
+const infiniteStreamOfPrimeNumbers = Stream.filter(Stream.init(0)(x => x + 1))(isPrime);
 
 /**
   * Create an inifinite stream that increments the value by 1 an filters out each value which is not a prime number
@@ -93,7 +93,7 @@ const infiniteStreamOfPrimeNumbers = null;
   * 
   * TODO: 4. I can get all the prime numbers from a stream that are less than 2000
   */
-const primeNumbersLessThan2000 = null;
+const primeNumbersLessThan2000 = Stream.takeUntil(Stream.filter(Stream.init(0)(x => x + 1))(isPrime))(x => x > 2000);
 
 /**
  * Sum an array arr with an imperative loop and a mutable variable.

@@ -1,16 +1,35 @@
-import { infiniteStreamOf1, 
+import { helloCurry,
+         infiniteStreamOf1, 
          infiniteStreamOfThatDoubleValues, 
          infiniteStreamOfPrimeNumbers,
          primeNumbersLessThan2000,
          sumArrayImperativeLoop,
          sumArrayRecusion,
-         sumArrayReduce
+         sumArrayReduce,
+         multiplyBy20,
+         multiplyCurry,
+         multiplyBy4
 }
 from './ex1';
 import Stream from './Stream';
 
 const chai = require('chai');
 const should = chai.should();
+
+describe('Currying', function() {
+  it('1. I can create a function that receives a firstName and returns a function that needs a lastName to produce "Hello firstName lastName"', function() {
+    helloCurry("Arnaud")("Geiser").should.equal("Hello Arnaud Geiser");
+  });
+  it('2. I can create a currified version that multiply 2 values"', function() {
+    multiplyCurry(4)(5).should.equal(20);
+  });
+  it('3. Then I can a function multiplyBy4 using multiplyCurry"', function() {
+    multiplyBy4(5).should.equal(20);
+  });
+  it('4. Or even multiplyBy20 from the multiplyCurry"', function() {
+    multiplyBy20(5).should.equal(100);
+  });
+});
 
 describe('Lazy evaluation - Stream', function() {
   it('1. I can produce an infinite stream that produces 1', function() {
@@ -29,17 +48,5 @@ describe('Lazy evaluation - Stream', function() {
     primeNumbersLessThan2000.length.should.equal(303);
     primeNumbersLessThan2000[200].should.equal(1229);
     primeNumbersLessThan2000[302].should.equal(1999);
-  });
-});
-
-describe('Recursion', function() {
-  it('1. I can sum the values of an array using an imperative loop and a mutable variable', function() {
-    sumArrayImperativeLoop([1,2,3,4]).should.equal(10);
-  });
-  it('2. I can sum the values fo an array using recursion', function() {
-    sumArrayRecusion([1,2,3,4]).should.equal(10);
-  });
-  it('3. I can sum the values fo an array using reduce', function() {
-    sumArrayReduce([1,2,3,4]).should.equal(10);
   });
 });
