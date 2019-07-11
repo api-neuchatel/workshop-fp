@@ -1,10 +1,10 @@
 {
-  "name": "workshop-part4",
+  "name": "exercise4",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch --require @babel/register"
+    "test": "mocha --watch -b --require @babel/register"
   },
   "author": "",
   "license": "ISC",
