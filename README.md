@@ -9,18 +9,22 @@ Vous trouverez ci-dessous les outils à installer pour les différents systèmes
 
 ### Windows
 
-1. Installer Git : https://git-scm.com/download/win
-2. Installer Node/NPM : https://nodejs.org/en/download/
-3. Installer Visual Studio Code : https://code.visualstudio.com/  
-Puis, au sein de Visual Studio Code (Terminal -> New Terminal), lancez les commandes ci-dessous :
-4. Cloner le repository à l'emplacement de votre choix
+1. Installez Git : https://git-scm.com/download/win
+2. Installez Node/NPM : https://nodejs.org/en/download/
+3. Installez Visual Studio Code : https://code.visualstudio.com/  
+4. Redémarrez votre machine
+5. Puis au sein de Visual Studio Code (Terminal -> New Terminal), lancez les commandes ci-dessous
+6. Clonez le repository à l'emplacement de votre choix
 ```bash
 git clone https://github.com/association-api/workshop-fp
 ```
-5. Tester l'installation
+7. Testez l'installation
 ```bash
-cd workshop-fp/code/exercise0 && npm install && npm test
+cd workshop-fp/code/exercise0
+npm install // Installation des dépendances
+npm test    // Lancement des tests
 ```
+Si tout va bien, vous devriez voir un message à l'écran vous indiquant que vous avez passé le test `2 + 2 = 4`.
 
 ### MacOS
 
@@ -56,21 +60,22 @@ cd workshop-fp/code/exercise0 && npm install && npm test
 
 ### Linux
 
-1. Installer Visual Studio Code : https://code.visualstudio.com/  
+1. Installez Visual Studio Code : https://code.visualstudio.com/  
 Puis, au sein de Visual Studio Code (Terminal -> New Terminal), lancez les commandes ci-dessous :
 
-2. Installer Node, NPM et Git
+2. Installez Node, NPM et Git
 ```bash
 apt-get install git nodejs npm (Debian)
 yum install git nodejs npm (RPM)
 ```
 
-3. Cloner le repository à l'emplacement de votre choix
+3. Clonez le repository à l'emplacement de votre choix
 ```bash
 git clone https://github.com/association-api/workshop-fp
 ```
 
-4. Tester l'installation
+4. Testez l'installation
 ```bash
 cd workshop-fp/code/exercise0 && npm install && npm test
 ```
+Si tout va bien, vous devriez voir un message à l'écran vous indiquant que vous avez passé le test `2 + 2 = 4`.
