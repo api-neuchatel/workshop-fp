@@ -14,7 +14,7 @@ const FRAME_PER_SECOND = 1000/20;
 
 let initialState = {
     player: {
-        position: [0,Y_POSITION],
+        position: [0,0],
         size: [16,24],
         jumpingSince: 0,
         sprite: {
@@ -26,9 +26,9 @@ let initialState = {
     world : {
         position: [initialPosition, 215]
     },
-    monsters: [{position: [300,113], size: [19,17]},
-               {position: [500,113], size: [19,17]},
-               {position: [550,113], size: [19,17]}],
+    monsters: [{position: [300,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
+               {position: [500,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
+               {position: [550,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]}],
     gameOver : false,
     score: 0
 };
@@ -80,11 +80,17 @@ const draw = (state) => {
 
     ctx.clearRect(0,0,game.width,game.height);
     ctx.drawImage(world,0+state.world.position[0]-initialPosition,200,500,215,0,0,game.width,game.height);
-    ctx.drawImage(image,sprite.x,0,size[0],size[1],position[0],position[1],16,24);
+    ctx.drawImage(image,sprite.x,0,size[0],size[1],position[0],position[1]+Y_POSITION,16,24);
+    ctx.font = '10px serif';
     ctx.fillText("Score :" + state.score, 230, 15);
 
+    if(state.gameOver) {
+        ctx.font = '32px serif';
+        ctx.fillText("GAME OVER", 45, 70);
+    }
+
     state.monsters.forEach(m => {
-        ctx.drawImage(monster,0,0,19,17,m.position[0],m.position[1],m.size[0],m.size[1]);
+        ctx.drawImage(monster,m.sprite.x,m.sprite.y,19,17,m.position[0],m.position[1]+114,m.size[0],m.size[1]);
     });
 }
 
@@ -146,8 +152,8 @@ const newPlayerPosition = (isMoving, jumpingSince, currentPosition) => {
     const position3 = addIf(position2, isMovingTop && !reachedLimitJump, (pos) => math.add(math.add(pos, SMALL_JUMP_VECTOR), GRAVITY));
     const position4 = addIf(position3, !isMovingTop || reachedLimitJump, (pos) => {
         const [x,y] = math.add(pos, GRAVITY);
-        if(y>Y_POSITION) {
-            return [x,Y_POSITION];
+        if(y>0) {
+            return [x,0];
         } else {
             return [x,y];
         }
@@ -162,7 +168,7 @@ const newPlayerJumpingSince = (isMovingInDirections, jumpingSince, position) => 
         return jumpingSince + 25;
     } else {
         const [_,y] = math.add(position, GRAVITY);
-        if(y>=Y_POSITION) {
+        if(y>=0) {
             return 0;
         } else {
             return jumpingSince;
@@ -179,21 +185,34 @@ const newWorldPosition = (isMovingInDirections, position) => {
 const moveMonsters = monsters => {
     return monsters.map(m => {
         const [x,y] = m.position;
+        const nextTime = m.sprite.time + FRAME_PER_SECOND;
 
+        let spriteChange = nextTime > SPRITE_CHANGE_MS;
 
-        
+        let time;
+        let sprite;
+        if(spriteChange) {
+            if(m.sprite.x+17>17) {
+                sprite = {x: 0, y: m.sprite.y, time: 0};
+            } else {
+                sprite = {x: m.sprite.x+17, y: m.sprite.y, time: 0};
+            }
+        } else {
+            sprite = {x: m.sprite.x, y: m.sprite.y, time: nextTime};
+        }
+
         if((x-MONSTER_SPEED)<0) {
             return {
                 size: m.size,
                 position: [400,y],
-                time: 0,
-
+                sprite: sprite
             };
         } else {
             return {
                 size: m.size,
                 position: [x-MONSTER_SPEED,y],
-                offet: 0,
+                time: time,
+                sprite: sprite
             };
         }
     });
@@ -211,9 +230,6 @@ function computeStates(states, event) {
 
     const isMoving = isMovingInDirections(event.direction);
 
-    if(state.gameOver) {
-        return [states[0]];
-    }
 
     if(event.rewind) {
         let offset = states.length-10 < 0 ? 1 : states.length-10;
@@ -221,6 +237,9 @@ function computeStates(states, event) {
         return a;
     }
 
+    if(state.gameOver) {
+        return states;
+    }
     const still = !isMoving('left') && !isMoving('right');
 
     const nextPlayerState = {
