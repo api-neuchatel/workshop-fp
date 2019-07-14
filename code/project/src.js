@@ -3,7 +3,7 @@ import math from 'mathjs';
 // Physics
 const GRAVITY = [0, 9];
 const SMALL_JUMP_VECTOR = [0, -17];
-const JUMPING_LIMIT = 150;
+const JUMPING_LIMIT = 300;
 const MONSTER_SPEED = 3;
 
 // Sprite
@@ -17,6 +17,7 @@ const FRAME_PER_SECOND = 1000/20;
 /**
  * Returns a function that returns true if the player is moving in the given direction.
  * Type : ([Direction]) -> Direction -> Boolean 
+ * Example : isMovingInDirections(['left','right'])('left') => true
  */
 const isMovingInDirections = directions => direction => {
     return directions.includes(direction);
@@ -44,15 +45,21 @@ const removeDirection = (currentDirections, removedDirection) => {
 }
 
 /**
+ * Returns if the player collide with a monster
+ */
+const collide = (player, m) => {
+    return  player.position[0] < m.position[0] + m.size[0] &&
+            player.position[0] + player.size[0] > m.position[0] &&
+            player.position[1] >= m.position[1];
+}
+
+/**
  * Returns if the player collides with one of the monsters
  * Type: (Player, Monsters) => Boolean
+ * Exemple : collideWithMonsters({position: [100,0], size: [10,10]}, [{position: [100,0], size: [10,10]}]}) => true
  */
 const collideWithMonsters = (player, monsters) => {
-   const collide = m => player.position[0] < m.position[0] + m.size[0] &&
-                        player.position[0] + player.size[0] > m.position[0] &&
-                        player.position[1] >= m.position[1];
-
-    return monsters.some(collide);
+    return monsters.some(m => collide(player, m));
 }
 
 /**
@@ -61,6 +68,11 @@ const collideWithMonsters = (player, monsters) => {
  */
 const lastState = states => states[states.length-1];
 
+/**
+ * If `ifAdd` is true, calls the function `add` with the `position`
+ * Type : (Position, Boolean, Position -> Position) -> Position
+ * Example : ([0 0], true, math.add(pos, [10 0])) -> [10 0]
+ */
 const addIf = (position, ifAdd, add) => {
     if(ifAdd) {
         return add(position);
@@ -74,6 +86,12 @@ const addIf = (position, ifAdd, add) => {
  */
 const isJumpReachedLimit = jumpingSince => jumpingSince >= JUMPING_LIMIT;
 
+/**
+ * Returns the new sprite according to the currentSprite and if the player is still
+ * 
+ * Type: (Sprite, Boolean) -> Sprite
+ * Example : ({x: 0, y:0, time:0}, false) -> ({x: 0, y:0, time:50})
+ */
 const newSprite = (currentSprite, still) => {
     const timeInCurrentSprite = currentSprite.time;
     const newTimeInCurrentSprite = timeInCurrentSprite+FRAME_PER_SECOND;
@@ -94,6 +112,13 @@ const newSprite = (currentSprite, still) => {
       }
 }
 
+/**
+ * Returns the new player position according the moving directions and the jumping tine.
+ * When the player is moving top (jumping), the SMALL_JUMP_VECTOR and the GRAVITIY should be added
+ * 
+ * Type : ((Direction -> Boolean), Number, Position) -> Position
+ * Example : newPlayerPosition((direction) -> direction==='left', 0, [0,0]) => [0,0]
+ */
 const newPlayerPosition = (isMoving, jumpingSince, currentPosition) => {
     const isMovingLeft = isMoving('left');
     const isMovingRight = isMoving('right')
@@ -117,11 +142,14 @@ const newPlayerPosition = (isMoving, jumpingSince, currentPosition) => {
 
 /**
  * Returns the time since the player is jumping.
+ * The player is jumping if the 'top' key is pressed and if he didn't reach the `isJumpReachedLimit`
+ * 
+ * Type : ((Direction -> Boolean), Number, Position) -> Number
  */
 const newPlayerJumpingSince = (isMovingInDirections, jumpingSince, position) => {
     const isMovingTop = isMovingInDirections('top');
     if(isMovingTop && !isJumpReachedLimit(jumpingSince)) {
-        return jumpingSince + 25;
+        return jumpingSince + FRAME_PER_SECOND;
     } else {
         const [_,y] = math.add(position, GRAVITY);
         if(y>=0) {
@@ -133,7 +161,9 @@ const newPlayerJumpingSince = (isMovingInDirections, jumpingSince, position) => 
 }
 
 /**
- * Returns the new world positions
+ * Returns the new position of the world according to a isMoving function and the current position.
+ * 
+ * Type: ((String -> Boolean), Position) => Position
  */
 const newWorldPosition = (isMoving, position) => {
     const position2 = addIf(position, isMoving('left'), (pos) => math.add(pos,[-10,0]));
@@ -143,7 +173,10 @@ const newWorldPosition = (isMoving, position) => {
 
 /**
  * Returns the new sprite state for a monster
- * Sprite -> Sprite
+ * 
+ * Type : Sprite -> Sprite
+ * Example : {x: 0, y:0, time: 0} -> {x: 0, y:0, time: 50}
+ * 
  */
 const moveSprite = monsterSprite => {
     const {x,y,time} = monsterSprite;
@@ -161,6 +194,15 @@ const moveSprite = monsterSprite => {
     }
 };
 
+/**
+ * Move the monsters (sprite + position)
+ * The monster is moving at 3 speed (MONSTER_SPEED)
+ * If the new poosition is 0, then the monster is positioning at 400
+ * 
+ * Type : [Monster] -> [Monster]
+ * Example : [{position: [400,0], sprite : {x: 0, y: 0, time: 0}, size: [0,0]}] -> [{position: [397,0], sprite :{x: 0, y:0, time:50}, size: [0,0]}]
+ * 
+ */
 const moveMonsters = monsters => {
     return monsters.map(m => {
         const [x,y] = m.position;
@@ -187,6 +229,7 @@ const addScore = score => {
 
 /**
  * Returns if the current direction is the rewind key
+ * direction is among values : 'left', 'right','top','rewind'
  * Type: Direction -> Boolean
  */
 const isRewind = direction => {
@@ -194,11 +237,12 @@ const isRewind = direction => {
 }
 
 /**
- * Returns an array of states 10 frames in the past
+ * Returns an array of states 10 frames in the past.
+ * There must be always one element in the array
  * Type: [State] -> [State]
  */
 const rewind10Fames = states => {
-    let offset = states.length-10 < 0 ? 1 : states.length-10;
+    let offset = states.length-10 <= 0 ? 1 : states.length-10;
     return states.splice(0, offset);
 }
 
@@ -228,5 +272,8 @@ export {
     lastState,
     isRewind,
     rewind10Fames,
-    isStill
+    isStill,
+    moveSprite,
+    addIf,
+    isJumpReachedLimit
 };
