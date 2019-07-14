@@ -9,7 +9,7 @@ describe('DivisibleBy2', function() {
   })
   it('Should return only even elements of random input', function() {
     let random = Array(40).fill().map(() => Math.round(Math.random() * 40))
-    divisibleBy2(random).every(x => x % 2 === 0)
+    divisibleBy2(random).every(x => x % 2 === 0).should.equal(true)
   })
 })
 
