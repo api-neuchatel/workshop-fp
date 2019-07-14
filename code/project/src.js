@@ -190,6 +190,9 @@ const newPlayerPosition = (isMoving, jumpingSince, currentPosition) => {
     return position4;
 };
 
+/**
+ * Returns the time since the player is jumping.
+ */
 const newPlayerJumpingSince = (isMovingInDirections, jumpingSince, position) => {
     const isMovingTop = isMovingInDirections('top');
     if(isMovingTop && !isJumpReachedLimit(jumpingSince)) {
@@ -204,14 +207,17 @@ const newPlayerJumpingSince = (isMovingInDirections, jumpingSince, position) => 
     }
 }
 
+/**
+ * Returns the new world positions
+ */
 const newWorldPosition = (isMoving, position) => {
-    const position2 = addIf(position, isMoving, (pos) => math.add(pos,[-10,0]));
-    const position3 = addIf(position2, isMoving, (pos) => math.add(pos,[10,0]));
+    const position2 = addIf(position, isMoving('left'), (pos) => math.add(pos,[-10,0]));
+    const position3 = addIf(position2, isMoving('right'), (pos) => math.add(pos,[10,0]));
     return position3;
 }
 
 /**
- * Returns the new sprite state
+ * Returns the new sprite state for a monster
  * Sprite -> Sprite
  */
 const moveSprite = monsterSprite => {
@@ -263,7 +269,7 @@ const isRewind = direction => {
 }
 
 /**
- * Returns an array of state 10 frames in the past
+ * Returns an array of states 10 frames in the past
  * Type: [State] -> [State]
  */
 const rewind10Fames = states => {
@@ -325,7 +331,7 @@ function computeStates(states, input) {
     return states.concat(newState);
 }
 
-// "main function", application bootstraping
+// "main function", application bootstrap
 (() => {
     // Creates an event stream from pressed keys
     const keyDownEventStream = fromEvent(document, "keydown").map((e) => ({keyDown : mappingKeys[e.keyCode]}));
@@ -348,8 +354,8 @@ function computeStates(states, input) {
   });
 
   // Sample every FPS and compute the state according to the current state and the input
-  // When a value change, draw() the resultat is stream
-  // The magic appears here
+  // When an event occurs, draw() is called
+  // The magic happens here
   input.sample(FRAME_PER_SECOND)
      .scan([INITIAL_STATE],computeStates)
      .onValue((states) => {
