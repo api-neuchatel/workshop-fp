@@ -94,6 +94,11 @@ const draw = (state) => {
     });
 }
 
+/**
+ * Compute a new state according to the input and the previous state.
+ * 
+ * Type : [State] -> [State]
+ */
 const computeStates = (states, input) => {
     // Get the last state
     const state = lastState(states);
@@ -109,7 +114,7 @@ const computeStates = (states, input) => {
     }
 
     // Creates a function isMoving according to the current directions
-    const isMoving = isMovingInDirections(input.direction);
+    const isMoving = isMovingInDirections(input.directions);
 
     // Computes the next player state
     const nextPlayerState = {
@@ -133,7 +138,7 @@ const computeStates = (states, input) => {
         score : addScore(state.score)
     }
 
-    // Appends the newState all the statess 
+    // Appends the newState to the states
     return states.concat(newState);
 }
 
@@ -145,16 +150,16 @@ const computeStates = (states, input) => {
     const keyUpEventStream = fromEvent(document, "keyup").map(e => ({keyUp: mappingKeys[e.keyCode]}));
     // Merges two streams in one
     const keysEventStream = keyDownEventStream.merge(keyUpEventStream);
-    // Create the input state accoridng to the keysEventStream
+    // Creates the input state accoridng to the keysEventStream
     // scan() is a kind of reduce() that provides intermediate result (event streams are infinite)
-    const input = keysEventStream.scan({direction: [], rewind: false}, (acc,v) => {
+    const inputProperty = keysEventStream.scan({directions: [], rewind: false}, (acc,v) => {
 
-        const keysPressed = v.keyDown ? addDirection(acc.direction, v.keyDown) : acc.direction;
+        const keysPressed = v.keyDown ? addDirection(acc.directions, v.keyDown) : acc.directions;
         const keysRemoved = v.keyUp ? removeDirection(keysPressed, v.keyUp) : keysPressed;
         const rewind = isRewind(v.keyDown);
 
     return {
-        direction: keysRemoved,
+        directions: keysRemoved,
         rewind: rewind
     };
   });
@@ -162,7 +167,7 @@ const computeStates = (states, input) => {
   // Sample every FPS and compute the state according to the current state and the input
   // When an event occurs, draw() is called
   // The magic happens here
-  input.sample(FRAME_PER_SECOND)
+  inputProperty.sample(FRAME_PER_SECOND)
      .scan([INITIAL_STATE],computeStates)
      .onValue((states) => {
         const state = lastState(states);
