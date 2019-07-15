@@ -107,8 +107,8 @@ Dès lors, on peut implémenter une fonction `take`:
 // Type: Stream[A] => Int => [A]
 let take = stream => n => {
   var tmp = []
-  nextStream = stream
-  for(i = 0; i < n; i++) {
+  let nextStream = stream
+  for(let i = 0; i < n; i++) {
     tmp[i] = nextStream.value
     nextStream = nextStream.next()
   }
