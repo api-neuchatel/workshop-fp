@@ -42,7 +42,7 @@ Si les entrées peuvent être vu comme un Stream d'évènements, les sorties peu
 Créons maintenant un EventStream `frameStream` qui correspond au nombre d'images par seconde. Ce stream peut être utilisé pour échantiller `inputStream` grâce à la fonction `sample()` pour générer un `sampleStream`.
 A partir de cet échantillon d'entrées, il est possible de calculer l'état final (grâce à une fonction pure) de notre application avec un `scan()`, afin de calculer la position du joueur et mettre cette valeur dans une `positionProperty`. Il ne reste plus qu'à appeler une fonction impure `draw()` qui lors du changement de valeur dessine à l'écran.
 
-Les diagrammes sous forme de marbles et très utilisé pour représenter les flux d'évènements. Si l'API et les concepts divergent quelque peu, il est possible de retrouver des schéma interactifs sur https://rxmarbles.com/#filter
+Les diagrammes sous forme de marbles sont très utilisés pour représenter les flux d'évènements. Si l'API et les concepts divergent quelque peu, il est possible de retrouver des schémas interactifs de RxJS sur https://rxmarbles.com/#filter
 
 ## Partie 1
 
