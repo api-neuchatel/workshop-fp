@@ -27,9 +27,9 @@ Les entrées clavier (ou d'une manette de jeux) peuvent être considérées comm
 
 ![Input as EventStream](input-as-event-stream.png)
 
-Le schéma ci-dessus présente deux EventStream, le `keyDownStream` qui représente les boutons qui onté été pressés, et le `keyUpStream` qui représente les boutons qui ont été relâchés.
+Le schéma ci-dessus présente deux EventStream, le `keyDownStream` qui représente les boutons qui ont été pressés, et le `keyUpStream` qui représente les boutons qui ont été relâchés.
 
-Dès lors, il est possible de fusionner les deux streams d'évènements en un stream unique grâce à la fonction `merge()`est ainsi obtenir un `keysStream`.
+Dès lors, il est possible de fusionner les deux streams d'évènements en un stream unique grâce à la fonction `merge()` et ainsi obtenir un `keysStream`.
 
 Grâce à la fonction `scan()` (qui est en sorte de `reduce()`, mais qui fournit les valeurs intermédaires plutôt que la valeur finale), il est possible de calculer une valeur `inputProperty` qui correspond à l'état des entrées.
 
@@ -40,21 +40,23 @@ Grâce à la fonction `scan()` (qui est en sorte de `reduce()`, mais qui fournit
 Si les entrées peuvent être vu comme un Stream d'évènements, les sorties peuvent l'être également.
 
 Créons maintenant un EventStream `frameStream` qui correspond au nombre d'images par seconde. Ce stream peut être utilisé pour échantiller `inputStream` grâce à la fonction `sample()` pour générer un `sampleStream`.
-A partir de cet échantillon d'entrées, il est possible de calculer l'état final (grâce à une fonction pure) de notre application avec un `scan()`, afin de calculer la position du joueur et mettre cette valeur dans une `positionProperty`. Il ne reste plus qu'à appeler une fonction impure `draw()` qui lors du changement de valeur dessine à l'écran.
+A partir de cet échantillon d'entrées, il est possible de calculer l'état final (grâce à une fonction pure) de notre application avec un `scan()` pour calculer la position du joueur et mettre cette valeur dans une `positionProperty`. Il ne reste plus qu'à appeler une fonction impure `draw()` qui lors du changement de valeur dessine à l'écran.
 
 Les diagrammes sous forme de marbles sont très utilisés pour représenter les flux d'évènements. Si l'API et les concepts divergent quelque peu, il est possible de retrouver des schémas interactifs de RxJS sur https://rxmarbles.com/#filter
 
-## Partie 1
+## Exercice
+
+### Partie 1
 
 Prenez connaissance de la classe `main.js`, celle-ci contient trois fonctions :
 
-- Le bootstrapping (main), en bas du fichier ou les streams sont crées, combinées et reduits
+- Le bootstrapping (main), en bas du fichier ou les streams sont créés, combinés et reduits
 - Le fonction impure `draw()` qui va dessiner l'état courant à l'écran
 - La fonction pure `computeStates()` qui va calculer les prochains états en fonction de l'état courant et de l'`inputProperty`
 
 Le but ici n'est pas ici que vous soyez capable de réécrire ce code mais que vous soyez capable de comprendre comment les concepts présentés ci-dessus peuvent être implémentées.
 
-## Partie 2
+### Partie 2
 
 Cette partie vous propose d'implémenter quelques fonctions pures permettant à notre petit jeu de prendre vie.
 
@@ -67,10 +69,10 @@ npm run serve           // Démarrage d'un serveur local (http://localhost:9000)
 
 Si votre navigateur ne s'est pas lancé, ouvrez un navigateur à l'URL http://localhost:9000 qui devrait vous afficher notre jeu.
 
-Dans un second Terminal (+ en haut à droite de Visual Studio Code), lancez la commande habituel pour les tests
+Dans un second Terminal ("+" en haut à droite du Terminal de Visual Studio Code), lancez la commande habituel pour les tests
 
 ```bash
 npm test
 ```
 
-Implémentez les fonctions afin que tous les tests soient passant, en théorie, chaque rajout de fonction devrait apporter un élément de gameplay supplémentaire !
+Implémentez les fonctions afin que tous les tests soient passants. En théorie, chaque rajout de fonction devrait apporter un élément de gameplay supplémentaire !
