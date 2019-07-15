@@ -100,6 +100,7 @@ export {
     multiplyCurry,
     multiplyBy4,
     multiplyBy20,
+    infiniteStreamOf1,
     infiniteStreamOfThatDoubleValues,
     infiniteStreamOfPrimeNumbers,
     primeNumbersLessThan2000
