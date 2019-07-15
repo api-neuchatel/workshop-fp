@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch --require @babel/register",
+    "test": "mocha --watch -b --require @babel/register",
     "serve": "npm-run-all -p -l watch start",
     "start": "webpack-dev-server --progress --colors",
     "watch": "webpack -w"

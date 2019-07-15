@@ -49,9 +49,9 @@ const INITIAL_STATE = {
     world : {
         position: [WORLD_INITIAL_X, 215]
     },
-    monsters: [{position: [300,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
-               {position: [500,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
-               {position: [550,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]}],
+    monsters: [{position: [200,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
+               {position: [300,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]},
+               {position: [350,0], sprite: {x: 0, y:0, time: 0}, size: [19,17]}],
     gameOver : false,
     score: 0
 };

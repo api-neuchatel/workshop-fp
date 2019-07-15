@@ -20,7 +20,7 @@ const FRAME_PER_SECOND = 1000/20;
  * Example : isMovingInDirections(['left','right'])('left') => true
  */
 const isMovingInDirections = directions => direction => {
-    return false;
+    return directions.includes(direction);
 } 
 
 
@@ -59,7 +59,7 @@ const collide = (player, m) => {
  * Exemple : collideWithMonsters({position: [100,0], size: [10,10]}, [{position: [100,0], size: [10,10]}]}) => true
  */
 const collideWithMonsters = (player, monsters) => {
-    return false;
+    return monsters.some(m => collide(player, m));
 }
 
 /**
@@ -84,7 +84,7 @@ const addIf = (position, ifAdd, add) => {
  * Returns if the value of `jumpingSince` reached the `JUMPING_LIMIT`
  * Type : Number -> Boolean
  */
-const isJumpReachedLimit = jumpingSince => false;
+const isJumpReachedLimit = jumpingSince => jumpingSince >= JUMPING_LIMIT;
 
 /**
  * Returns the new sprite according to the currentSprite and if the player is still
@@ -204,7 +204,19 @@ const moveSprite = monsterSprite => {
  * 
  */
 const moveMonsters = monsters => {
-    return monsters;
+    return monsters.map(m => {
+        const [x,y] = m.position;
+        
+
+        const nextPosition = (x-MONSTER_SPEED)<0 ? [400,y] : [x-MONSTER_SPEED,y];
+        const nextMonsterSprite = moveSprite(m.sprite);
+ 
+        return {
+            size: m.size,
+            position: nextPosition,
+            sprite: nextMonsterSprite
+        };
+    });
 }
 
 /**
@@ -212,7 +224,7 @@ const moveMonsters = monsters => {
  * Type : Number -> Number
  */
 const addScore = score => {
-    return 0;
+    return score + 10;
 }
 
 /**
@@ -221,7 +233,7 @@ const addScore = score => {
  * Type: Direction -> Boolean
  */
 const isRewind = direction => {
-    return direction === 'rewind';
+    return direction == 'rewind';
 }
 
 /**
@@ -230,7 +242,8 @@ const isRewind = direction => {
  * Type: [State] -> [State]
  */
 const rewind10Fames = states => {
-    return states;
+    let offset = states.length-10 <= 0 ? 1 : states.length-10;
+    return states.splice(0, offset);
 }
 
 /**
@@ -241,7 +254,7 @@ const rewind10Fames = states => {
  * Usage : isMoving('top'), isMoving('right'), isMoving('left')
  */
 const isStill = isMoving => {
-    return false;
+    return !isMoving('left') && !isMoving('right');
 }
 
 export {
