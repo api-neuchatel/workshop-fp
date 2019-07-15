@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Workshop - Functional Programming</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+		.pl-group {
+			margin-bottom: 50px !important;
+			text-align: left;
+		}
+		.pl {
+			border:1px solid white !important;
+			display:inline-block;
+			width:220px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>PROJET</h2>
+					
+					<span style="font-size:50px;color:#DDDDDD">Workshop Functional Programming</span>
+				</section>
+
+				<section>
+						<img src="images/frp.jpg" style="width:70%" />
+				</section>
+
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:70px">EVENT STREAM</span>
+						<p>Représente un ensemble de valeurs à travers le temps</p>
+				</section>
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:70px">PROPERTY</span>
+						<p>Représente une valeur courange qui peut changer à travers le temps</p>
+				</section>
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:70px">INPUT AS STREAM</span>
+						<img src="images/snes-pad.jpg" style="width:70%" />
+				</section>
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:60px">INPUT AS STREAM</span>
+						<img style="border: 0;background-color:white" src="images/input-as-event-stream.png" />
+				</section>
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:60px">OUTPUT AS STREAM</span>
+						<img style="border: 0;background-color:white;width:70%" src="images/output-as-event-stream.png"/>
+				</section>
+				<section>
+						<span style="text-align: center;font-weight: bold; font-size:60px">BACONJS</span>
+						<div><img style="border: 0;background-color:white;width:60%" src="images/baconjs.png"/></div>
+				</section>
+				<section>
+						<a href="http://localhost:9000"><span style="text-align: center;font-weight: bold; font-size:180px">DEMO</span></a>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
