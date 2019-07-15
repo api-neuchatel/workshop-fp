@@ -54,15 +54,6 @@ const collide = (player, m) => {
 }
 
 /**
- * Returns if the player collides with one of the monsters
- * Type: (Player, Monsters) => Boolean
- * Exemple : collideWithMonsters({position: [100,0], size: [10,10]}, [{position: [100,0], size: [10,10]}]}) => true
- */
-const collideWithMonsters = (player, monsters) => {
-    return monsters.some(m => collide(player, m));
-}
-
-/**
  * Returns a function that receives a state array and return the last state.
  * Type ([State]) => State
  */
@@ -79,12 +70,6 @@ const addIf = (position, ifAdd, add) => {
     }
     return position;
 }
-
-/**
- * Returns if the value of `jumpingSince` reached the `JUMPING_LIMIT`
- * Type : Number -> Boolean
- */
-const isJumpReachedLimit = jumpingSince => jumpingSince >= JUMPING_LIMIT;
 
 /**
  * Returns the new sprite according to the currentSprite and if the player is still
@@ -178,7 +163,7 @@ const newWorldPosition = (isMoving, position) => {
  * Example : {x: 0, y:0, time: 0} -> {x: 0, y:0, time: 50}
  * 
  */
-const moveSprite = monsterSprite => {
+const newMonsterSprite = monsterSprite => {
     const {x,y,time} = monsterSprite;
     const nextTime = time + FRAME_PER_SECOND;
     const spriteMustBeChanged = nextTime > SPRITE_CHANGE_MS;
@@ -195,28 +180,12 @@ const moveSprite = monsterSprite => {
 };
 
 /**
- * Move the monsters (sprite + position)
- * The monster is moving at 3 speed (MONSTER_SPEED)
- * If the new poosition is 0, then the monster is positioning at 400
- * 
- * Type : [Monster] -> [Monster]
- * Example : [{position: [400,0], sprite : {x: 0, y: 0, time: 0}, size: [0,0]}] -> [{position: [397,0], sprite :{x: 0, y:0, time:50}, size: [0,0]}]
- * 
+ * Returns if the current direction is the rewind key
+ * direction is among values : 'left', 'right','top','rewind'
+ * Type: Direction -> Boolean
  */
-const moveMonsters = monsters => {
-    return monsters.map(m => {
-        const [x,y] = m.position;
-        
-
-        const nextPosition = (x-MONSTER_SPEED)<0 ? [400,y] : [x-MONSTER_SPEED,y];
-        const nextMonsterSprite = moveSprite(m.sprite);
- 
-        return {
-            size: m.size,
-            position: nextPosition,
-            sprite: nextMonsterSprite
-        };
-    });
+const isRewind = direction => {
+    return direction === 'rewind';
 }
 
 /**
@@ -225,25 +194,6 @@ const moveMonsters = monsters => {
  */
 const addScore = score => {
     return score + 10;
-}
-
-/**
- * Returns if the current direction is the rewind key
- * direction is among values : 'left', 'right','top','rewind'
- * Type: Direction -> Boolean
- */
-const isRewind = direction => {
-    return direction == 'rewind';
-}
-
-/**
- * Returns an array of states 10 frames in the past.
- * There must be always one element in the array
- * Type: [State] -> [State]
- */
-const rewind10Fames = states => {
-    let offset = states.length-10 <= 0 ? 1 : states.length-10;
-    return states.splice(0, offset);
 }
 
 /**
@@ -256,6 +206,59 @@ const rewind10Fames = states => {
 const isStill = isMoving => {
     return !isMoving('left') && !isMoving('right');
 }
+
+/**
+ * Returns an array of states 10 frames in the past.
+ * There must be always one element in the array
+ * Type: [State] -> [State]
+ */
+const rewind10Fames = states => {
+    let offset = states.length-10 <= 0 ? 1 : states.length-10;
+    return states.splice(0, offset);
+}
+
+
+/**
+ * Move the monsters (sprite + position)
+ * The monster is moving at 3 speed (MONSTER_SPEED)
+ * If the new poosition is 0, then the monster is positioning at 400
+ * You can call use the already defined `newMonsterSprite` function for the sprite
+ * 
+ * Type : [Monster] -> [Monster]
+ * Example : [{position: [400,0], sprite : {x: 0, y: 0, time: 0}, size: [0,0]}] -> [{position: [397,0], sprite :{x: 0, y:0, time:50}, size: [0,0]}]
+ * 
+ */
+const moveMonsters = monsters => {
+    return monsters.map(m => {
+        const [x,y] = m.position; 
+        const newX = x-MONSTER_SPEED<0 ? 400 : x-MONSTER_SPEED;
+
+        return {
+            size: m.size,
+            position: [newX,y],
+            sprite: newMonsterSprite(m.sprite)
+        }
+    });
+}
+
+/**
+ * Returns if the value of `jumpingSince` reached the `JUMPING_LIMIT`
+ * Type : Number -> Boolean
+ */
+const isJumpReachedLimit = jumpingSince => jumpingSince >= JUMPING_LIMIT;
+
+
+/**
+ * Returns if the player collides with one of the monsters.
+ * You have to call the function `collide` for every monster
+ * .
+ * Type: (Player, [Monster]) => Boolean
+ * Exemple : collideWithMonsters({position: [100,0], size: [10,10]}, [{position: [100,0], size: [10,10]}]}) => true
+ */
+const collideWithMonsters = (player, monsters) => {
+    return monsters.some(m => collide(player,m));
+}
+
 
 export {
     FRAME_PER_SECOND,
@@ -273,7 +276,7 @@ export {
     isRewind,
     rewind10Fames,
     isStill,
-    moveSprite,
+    newMonsterSprite,
     addIf,
     isJumpReachedLimit
 };

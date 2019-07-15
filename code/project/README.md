@@ -75,4 +75,14 @@ Dans un second Terminal ("+" en haut à droite du Terminal de Visual Studio Code
 npm test
 ```
 
-Implémentez les fonctions afin que tous les tests soient passants. En théorie, chaque rajout de fonction devrait apporter un élément de gameplay supplémentaire !
+Puis, implémentez les fonctions suivantes dans le fichier `src.js` :
+
+- `addScore()` : Le score doit augmenter au fil du temps
+- `isStill()` : Le personnage est tranquille si il ne bouge pas à gauche ou à droite
+- `isMovingInDirections()` : Le personnage est maintenant capable de bouger grâce aux flèches directionnelles
+- `rewind10Fames()` : Il est possible de revenir 10 frames dans le passé grâce à la touche R
+- `moveMonsters()` : Les monstres bougent
+- `isJumpReachedLimit()` : Le personnage a une limite de hauteur de saut
+- `collideWithMonsters()` : Retourne si une collision a lieu entre le personnage
+
+Pour les plus assidus, vous pouvez supprimer d'autres fonctions et tentez votre propre implémentation.

@@ -4,7 +4,7 @@ import {
     rewind10Fames, 
     isRewind, 
     lastState, 
-    moveSprite, 
+    newMonsterSprite, 
     moveMonsters, 
     newWorldPosition, 
     addIf, 
@@ -37,6 +37,14 @@ describe('isStill', function() {
         isStill((direction) => direction == 'top').should.be.equal(true);
     });
 });
+describe('isMovingInDirections', function() {
+    it('Given directions [\'left\',\'right\'] should moving left' , function() {
+        isMovingInDirections(['left','right'])('left').should.equal(true);
+    });
+    it('Given directions [\'left\'] should not moving right' , function() {
+        isMovingInDirections(['left'])('right').should.equal(false);
+    });
+});
 describe('rewind10Frames', function() {
     it('Given empty array should be empty array', function() {
         rewind10Fames([]).length.should.equal(0)
@@ -67,15 +75,15 @@ describe('lastState', function() {
         lastState(['firstState','secondState']).should.equal('secondState');
     });
 });
-describe('moveSprite', function() {
+describe('newMonsterSprite', function() {
     it('Given sprite at time 0, should be sprite at time 50', function() {
-        moveSprite({x: 0, y: 0, time: 0}).should.deep.equal({x: 0, y:0, time:50});
+        newMonsterSprite({x: 0, y: 0, time: 0}).should.deep.equal({x: 0, y:0, time:50});
     });
     it('Given sprite at time 100 at x 0, should be sprite at time 0 at position x 17', function() {
-        moveSprite({x: 0, y: 0, time: 100}).should.deep.equal({x: 17, y:0, time:0});
+        newMonsterSprite({x: 0, y: 0, time: 100}).should.deep.equal({x: 17, y:0, time:0});
     });
     it('Given sprite at time 100 at x 17, should be sprite at time 0 at position x 0', function() {
-        moveSprite({x: 17, y: 0, time: 100}).should.deep.equal({x: 0, y:0, time:0});
+        newMonsterSprite({x: 17, y: 0, time: 100}).should.deep.equal({x: 0, y:0, time:0});
     });
 });
 describe('moveMonsters', function() {
@@ -121,15 +129,6 @@ describe('isJumpReachedLimit', function() {
     });
     it('Given 350 should be true', function() {
         isJumpReachedLimit(350).should.equal(true);
-    });
-});
-
-describe('isMovingInDirections', function() {
-    it('Given directions [\'left\',\'right\'] should moving left' , function() {
-        isMovingInDirections(['left','right'])('left').should.equal(true);
-    });
-    it('Given directions [\'left\'] should not moving right' , function() {
-        isMovingInDirections(['left'])('right').should.equal(false);
     });
 });
 
