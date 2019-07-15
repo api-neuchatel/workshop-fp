@@ -37,12 +37,12 @@ Grâce à la fonction `scan()` (qui est en sorte de `reduce()`, mais qui fournit
 
 ![Output as EventStream](output-as-event-stream.png)
 
-Si les entrées peuvent être vu comme un Stream d'évènements, les sorties peuvent l'être également.
+Si les entrées peuvent être vues comme un Stream d'évènements, les sorties peuvent l'être également.
 
-Créons maintenant un EventStream `frameStream` qui correspond au nombre d'images par seconde. Ce stream peut être utilisé pour échantiller `inputStream` grâce à la fonction `sample()` pour générer un `sampleStream`.
-A partir de cet échantillon d'entrées, il est possible de calculer l'état final (grâce à une fonction pure) de notre application avec un `scan()` pour calculer la position du joueur et mettre cette valeur dans une `positionProperty`. Il ne reste plus qu'à appeler une fonction impure `draw()` qui lors du changement de valeur dessine à l'écran.
+Créons maintenant un EventStream `frameStream` qui correspond au nombre d'images par seconde. Ce stream peut être utilisé pour échantillonner `inputStream` grâce à la fonction `sample()` pour générer un `sampleStream`.
+A partir de cet échantillon d'entrées, il est possible de calculer la position du joueur (grâce à une fonction pure) avec un `scan()` qui mettra cette valeur dans une `positionProperty`. Il ne reste plus qu'à appeler une fonction impure `draw()` qui lors du changement de valeur dessine à l'écran.
 
-Les diagrammes sous forme de marbles sont très utilisés pour représenter les flux d'évènements. Si l'API et les concepts divergent quelque peu, il est possible de retrouver des schémas interactifs de RxJS sur https://rxmarbles.com/#filter
+Les diagrammes sous forme de marbles sont très utilisés pour représenter les flux d'évènements. Si l'API et les concepts divergent quelque peu, il est possible de retrouver des schémas interactifs de RxJS sur https://rxmarbles.com/
 
 ## Exercice
 
@@ -52,9 +52,9 @@ Prenez connaissance de la classe `main.js`, celle-ci contient trois fonctions :
 
 - Le bootstrapping (main), en bas du fichier ou les streams sont créés, combinés et reduits
 - Le fonction impure `draw()` qui va dessiner l'état courant à l'écran
-- La fonction pure `computeStates()` qui va calculer les prochains états en fonction de l'état courant et de l'`inputProperty`
+- La fonction pure `computeStates()` qui va calculer les prochains états en fonction de l'état courant, de l'`inputProperty` et d'un ensemble de fonctions pures
 
-Le but ici n'est pas ici que vous soyez capable de réécrire ce code mais que vous soyez capable de comprendre comment les concepts présentés ci-dessus peuvent être implémentées.
+Le but ici n'est pas ici que vous soyez capable de réécrire ce code mais que vous compreniez comment les concepts présentés ci-dessus peuvent être implémentés.
 
 ### Partie 2
 
@@ -67,7 +67,7 @@ npm install             // Installlation des dépendances
 npm run serve           // Démarrage d'un serveur local (http://localhost:9000)
 ```
 
-Si votre navigateur ne s'est pas lancé, ouvrez un navigateur à l'URL http://localhost:9000 qui devrait vous afficher notre jeu.
+Si votre navigateur ne s'est pas lancé, ouvrez le à l'URL http://localhost:9000 qui devrait vous afficher notre jeu.
 
 Dans un second Terminal ("+" en haut à droite du Terminal de Visual Studio Code), lancez la commande habituel pour les tests
 
