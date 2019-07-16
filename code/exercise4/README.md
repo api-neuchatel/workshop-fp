@@ -9,9 +9,9 @@ npm test    // Lancement des tests en continu
 
 ## Immutability + Recursion    
 
-- Créez la fonction `sumArrayImperativeLoop` qui permet de faire la somme des nombres d'un tableau grâce à un boucle impérative et une variable mutable
-- Créez la fonction `sumArrayRecusion` qui permet de faire la somme des nombres d'un tableau grâce à la récursivitité
-- Créez la fonction `sumArrayReduce` qui permet de faire la somme dans nombres d'un tableau grâce à la méthode `reduce()` de Array en Javascript
+- Créez la fonction `sumArrayImperativeLoop` qui permet de faire la somme des nombres d'un tableau grâce à un boucle impérative et une variable mutable.
+- Créez la fonction `sumArrayRecusion` qui permet de faire la somme des nombres d'un tableau grâce à la récursivitité.
+- Créez la fonction `sumArrayReduce` qui permet de faire la somme dans nombres d'un tableau grâce à la méthode `reduce()` de Array en Javascript.
 
 Notez dès à présent que la majorité des fonctions que nous avons implémentées sont offertes en natif par le langage Javascript : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array.
 

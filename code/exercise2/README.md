@@ -24,8 +24,8 @@ npm test    // Lancement des tests en continu
 
 ### Pratique
 
-- Créez la fonction `map` qui reçoit en paramètre un tableau et une fonction et qui retourne un tableau composé de l'application de la fonction à chaque élément du tableau
-- Créez la fonction `filter` qui reçoit en paramètre un tableau et un predicate (fonction qui retourne un boolean) et qui retourne un tableau composé des éléments qui respectent cette condition
+- Créez la fonction `map` qui reçoit en paramètre un tableau et une fonction et qui retourne un tableau composé de l'application de la fonction à chaque élément du tableau.
+- Créez la fonction `filter` qui reçoit en paramètre un tableau et un predicate (fonction qui retourne un boolean) et qui retourne un tableau composé des éléments qui respectent cette condition.
 - Créez la fonction `findPersonById` qui reçoit en paramètre un entier et qui retourne la personne qui correspond à cet identifiant. Aidez-vous de la fonction `filter` que vous avez implémentée. Remarquez que votre fonction a accès à `people`, vous venez donc de créer votre première closure!
 - Puis créez les fonctions `peopleYoungerThan30`, `peopleAcronyms`, `peopleAcronymsUppercaseStartWithD` en utilisant les fonctions que vous avez développé.
 - Finalement, créez la fonction `commentsByMovie`, elle nécessitera sans doute que vous appelez la fonction `flat` définie pour vous:
