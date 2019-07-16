@@ -2,7 +2,7 @@
 
 Cet exercice vous permet de contrôler l'installation des outils qu'il vous a été demandé d'installer.
 
-Durant la durée de ce workshop, tous les exercices doivent être réalisés avec la commande `npm test` au sein de votre Terminal Visual Studio Code (Terminal -> New Terminal) qui exécute les tests en continu lors de chaque changement dans votre code (à partir de l'exercice 1)
+Durant la durée de ce workshop, tous les exercices doivent être réalisés avec la commande `npm test` au sein de votre Terminal Visual Studio Code (Terminal -> New Terminal) qui exécute les tests en continu lors de chaque changement dans votre code (à partir de l'exercice 1).
 
 Globalement, avant de commencer chaque exercice vous devez exécuter les commandes suivantes (dans le répertoire de l'exercice) :
 

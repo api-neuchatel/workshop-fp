@@ -57,7 +57,7 @@ Malgré les bénéfices que peuvent apporter la programmation fonctionnelle et l
 Il manque encore l'incitation à changer.
 
 ## 1.4 CPU multi-coeurs
-L'apparition des CPU multi-coeurs va être l'élément qui va pousser la programmation fonctionnelle sur le devant de la scène. Les CPU se complexifient, il est encore plus difficile qu'avant de gérer la memoire et encore plus ardu d'exploiter au maximum les coeurs qui nous sont mis à disposition.
+L'apparition des CPU multi-coeurs va être l'élément qui va pousser la programmation fonctionnelle sur le devant de la scène. Les CPU se complexifient, il est encore plus difficile qu'avant de gérer la mémoire et encore plus ardu d'exploiter au maximum les coeurs qui nous sont mis à disposition.
 De plus, les capacités des CPUs et l'accès à la RAM ont évolué de manière non linéaires, ce qui a poussé à mettre en place des caches au niveau des processeurs. Il faut donc que nos programmes puissent gérer de manière efficaces ces caches sans devoir aller taper trop régulièrement dans la RAM.
 
 Nous avons besoin d'une abstraction supplémentaire afin de gérer ces problématiques !
