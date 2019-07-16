@@ -1,6 +1,4 @@
-# Slides
-
-## Cours
+# Supports
 
 * Introduction
     * [Slides](https://association-api.github.io/workshop-fp/course/0.%20Introduction/slides/)
