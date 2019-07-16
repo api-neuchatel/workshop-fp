@@ -1,7 +1,7 @@
 # Workshop Functional Programming
 
 Merci pour votre intérêt et votre participation à ce workshop.
-Afin que nous soyons le plus efficace durant les 3 heures qui durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
+Afin que nous soyons le plus efficace durant les 3 heures que durera cette soirée, nous vous demandons d'installer les outils nécessaires afin d'être le plus efficace le jour J.
 
 Vous trouverez ci-dessous les outils à installer pour les différents systèmes d'exploitation, nous comptons sur vous !
 
