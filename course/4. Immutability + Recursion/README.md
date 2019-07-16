@@ -20,22 +20,22 @@ L'__immuabilité__ permet de palier élégament à ce problème. De manière gé
 En programmation fonctionnelle, on évite également au maximum les valeurs muables, ce qui permet une meilleure lisibilité du code et facilite le raisonnement à propos du programme. Cette notion est liée à celle des fonctions sans effets de bords. En effet une fonction sans side effects ne peut pas travailler avec des valeurs muables.
 
 ## 4.2: Récursion
-Revenons sur nos implémentations de `map` et de `filter` sur les tableaux. En partie 2, nous avons écrit ceci:
+Revenons sur nos implémentations de `map` et de `filter` sur les tableaux. En [partie 2](https://github.com/association-api/workshop-fp/tree/master/course/2.%20Abstraction%20%2B%20Closures), nous avons écrit ceci:
 
 ```js
 // Type: ([Double], Double => A) => [A]
-function map(numbers, f) {
+const map = (numbers, f) => {
   var tmp = []
-  for(i = 0; i < numbers.length; i++) {
+  for(const i = 0; i < numbers.length; i++) {
      tmp.push(f(numbers[i]))
   }
   return tmp
 }
 
 // Type: ([Double], Double => Boolean) => [Double]
-function filter(numbers, p) {
+const filter = (numbers, p) => {
   var tmp = []
-  for(i = 0; i < numbers.length; i++) {
+  for(const i = 0; i < numbers.length; i++) {
     if(p(numbers[i])) {
       tmp.push(numbers[i])
     }
@@ -54,7 +54,7 @@ La récursion permet de résoudre élégamment ces trois problèmes en une fois.
 ### Listes récursives
 Afin de transformer les fonctions précédentes en fonctions récursives, une première étape est de pouvoir représenter les tableaux comme des structures de données récursives. Ceci n'est pas obligatoire, mais permet d'écrire du code beaucoup plus lisible.
 
-En effet, les tableaux indexés n'ont par nature aucune structure récursive. Itérer sur un tableau se fait par incrément d'indices. Considérons maintenant une conceptuellement récursive des tableaux. Supposons que l'on travaille sur un tableau contenant des éléments de type `A` (par exemple des entiers, des strings, etc...). Appelons le premier élément de ce tableau la tête (`head`). Il s'agit d'un élément de type `A`. Le reste du tableau est appelé la queue (`tail`) et est de type `[A]`. 
+En effet, les tableaux indexés n'ont par nature aucune structure récursive. Itérer sur un tableau se fait par incrément d'indices. Considérons maintenant une conceptualisation récursive des tableaux. Supposons que l'on travaille sur un tableau contenant des éléments de type `A` (par exemple des entiers, des strings, etc...). Appelons le premier élément de ce tableau la tête (`head`). Il s'agit d'un élément de type `A`. Le reste du tableau est appelé la queue (`tail`) et est de type `[A]`. 
 
 Similairement, la queue du tableau est elle-même un tableau... qui contient également une tête et une queue. Cette queue est aussi un tableau qui contient elle-même une nouvelle tête et une nouvelle queue, etc... Ce schéma se répète jusqu'à ce que la nouvelle queue ainsi créée soient en fait une liste vide.
 
@@ -100,12 +100,12 @@ let filter = xs => p => {
 La première étape de la conception d'une fonction récursive est de se demander quelle sera la condition d'arrêt, que l'on appelle également le bas de la récursion (bottom of the recursion). Sans elle, notre fonction récursive ne pourra jamais retourner et donc ne s'arrêtera jamais. Dans les deux cas, notre condition est `xs.length === 0`. On complète:
 
 ```js
-let map = xs => f => {
+const map = xs => f => {
   if(xs.length === 0) { return [] }
   // code
 }
 
-let filter = xs => p => {
+const filter = xs => p => {
   if(xs.length === 0) { return [] }
   // code
 }
@@ -114,7 +114,7 @@ let filter = xs => p => {
 Dans le cas de `map`, si `xs` n'est pas vide, compte tenu de notre structure de liste récursive, que fait-on? Simplement, on applique `f` à la tête de la liste, puis on récurse sur la queue. Bien sûr, il ne faut pas oublier de combiner tous nos `f(head(xs))` ensemble, il faut donc `prepend` notre nouvelle valeur à la queue à laquelle on aura déjà appliqué `f`.
 
 ```js
-let map = xs => f => {
+const map = xs => f => {
   if(xs.length === 0) { return [] }
   return prepend(f(head(xs)))(map(tail(xs))(f))
 }
@@ -122,13 +122,13 @@ let map = xs => f => {
 
 On peut écrire de manière plus concise:
 ```js
-let map = xs => f => xs.length === 0 ? [] : prepend(f(head(xs)))(map(tail(xs))(f))
+const map = xs => f => xs.length === 0 ? [] : prepend(f(head(xs)))(map(tail(xs))(f))
 ```
 
 Pour `filter`, le raisonnement est presque similaire. On teste `p(head(xs))`, si on obtient `true`, on `prepend` la tête à notre nouvelle liste, sinon on ne fait rien.
 
 ```js
-let filter = xs => p => {
+const filter = xs => p => {
   if(xs.length === 0) { return [] }
   let queue = filter(tail(xs))(p)
   return p(head(xs)) ? prepend(head(xs))(queue) : queue
@@ -172,3 +172,6 @@ En Clojure, on peut écrire:
 ```
 
 L'équivalent de notre `prepend` est ici `cons`.
+
+## 4.4: A vous de jouer!
+Vous trouverez les exercices relatifs à cette partie [ici](https://github.com/association-api/workshop-fp/tree/master/code/exercise4).

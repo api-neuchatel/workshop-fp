@@ -1,7 +1,7 @@
 # Partie 3: Currying et Lazy Evaluation
 
 ## 3.1: Currying
-En partie 2, nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappel, nous avions pris l'exemple suivant:
+En [partie 2](https://github.com/association-api/workshop-fp/tree/master/course/2.%20Abstraction%20%2B%20Closures), nous avons vu que les higher order functions nous permettraient de faire de l'évaluation partielle de fonctions. Pour rappel, nous avions pris l'exemple suivant:
 
 ```js
 function greet(gender) {
@@ -35,15 +35,15 @@ function greet(gender) {
 greet("Mr")("Jean")("Dupond") // "Mr Jean Dupond"
 ```
 
-Cette définition étant relativement lourde, on peut utiliser la syntaxe raccourcie des lambda pour écrire de manière équivalente
+Cette définition étant relativement lourde, on peut utiliser la syntaxe raccourcie des lambda pour écrire de manière équivalente:
 
 ```js
-let greet = gender => firstname => lastname => gender + " " + firstname + " " + lastname
+const greet = gender => firstname => lastname => gender + " " + firstname + " " + lastname
 
 greet("Mr")("Jean")("Dupond") // "Mr Jean Dupond"
 ```
 
-Cette syntaxe nous permet d'évaluer `greet` partiellement à différents endroits du programme, ce qui peut se révéler très pratique dans un langage fonctionnel où on veut éviter d'avoir des variables muables (plus sur l'immuabilité en partie 4).
+Cette syntaxe nous permet d'évaluer `greet` partiellement à différents endroits du programme, ce qui peut se révéler très pratique dans un langage fonctionnel où on veut éviter d'avoir des variables muables (plus sur l'immuabilité en [partie 4](https://github.com/association-api/workshop-fp/tree/master/course/4.%20Immutability%20%2B%20Recursion)).
 
 ```js
 let greetMr = greet("Mr")
@@ -116,7 +116,7 @@ let take = stream => n => {
 }
 ```
 
-*Note: on verra en partie 4 que l'on peut réaliser la même opération de manière beaucoup plus élégante en utilisant une fonction récursive.*
+*Note: on verra en [partie 4](https://github.com/association-api/workshop-fp/tree/master/course/4.%20Immutability%20%2B%20Recursion) que l'on peut réaliser la même opération de manière beaucoup plus élégante en utilisant une fonction récursive.*
 
 Alors que `take` se contente d'évaluer le stream n fois, il peut être intéressant de considérer une implémentation possible de `map`, qui elle doit retourner un stream infini:
 
@@ -131,3 +131,6 @@ let map = s => f => {
 ```
 
 Sa définition est quasiment identique à celle de `init`.
+
+## 3.3: A vous de jouer!
+Vous trouverez les exercices relatifs à cette partie [ici](https://github.com/association-api/workshop-fp/tree/master/code/exercise3).
