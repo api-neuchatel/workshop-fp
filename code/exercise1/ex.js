@@ -30,7 +30,7 @@ export function player2Strategy(deck, card) {
     return newCard
 }
 
-function game() {
+export function game() {
     let bountyDeck = [1, 2, 3, 4, 5]
     let player1Deck = [1, 2, 3, 4, 5]
     let player2Deck = [1, 2, 3, 4, 5]
@@ -76,5 +76,3 @@ export function nextState(state) {
         player2Score: state.player2Score
     }
 }
-
-game()
