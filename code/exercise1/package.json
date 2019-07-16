@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch -b --require @babel/register"
+    "test": "mocha -b --watch --require @babel/register",
+    "start": "nodemon --exec babel-node main.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
+    "babel-plugin-rewire": "^1.2.0",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "chai-sinon": "^2.8.1",
+    "mocha": "^6.1.4",
+    "mocha-sinon": "^2.1.0",
+    "nodemon": "^1.19.1",
+    "sinon": "^7.3.2"
   }
 }
