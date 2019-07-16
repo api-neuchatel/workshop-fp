@@ -1,4 +1,4 @@
-import { shuffle, without, endMessage, turnMessage, nextState } from './solution';
+import { shuffle, without, endMessage, turnMessage, nextState } from './ex';
 
 const chai = require('chai');
 const should = chai.should();
