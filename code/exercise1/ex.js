@@ -1,24 +1,24 @@
-function shuffle(array) {
+export function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-function getRandomCard(deck) {
+export function getRandomCard(deck) {
     shuffle(deck)
     return deck.pop()
 }
 
-function getCard(deck, card) {
+export function getCard(deck, card) {
     let index = deck.indexOf(card)
     return deck.splice(index, 1)[0]
 }
 
-function player1Strategy(deck) {
+export function player1Strategy(deck) {
     let card = getRandomCard(deck)
     console.log("Player 1 plays " + card)
     return card
 }
 
-function player2Strategy(deck, card) {
+export function player2Strategy(deck, card) {
     let newCard = getCard(deck, card)
     console.log("Player 2 plays " + card)
     return newCard
