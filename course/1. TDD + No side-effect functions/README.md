@@ -79,4 +79,4 @@ function nextDay(date) {
 *Note: selon la définition présentée ici, les programmes fonctionnels sont totalement inutiles puisqu'ils ne font rien! En pratique, on pense les programmes fonctionnels de telle sorte à placer les effets de bords en périphérie du code et le code fonctionnel au coeur. Ceci sera expliqué plus précisément en partie 5.*
 
 ## 1.3: A vous de jouer!
-Vous trouverez les exercices relatives à cette partie [ici](https://github.com/association-api/workshop-fp/tree/master/code/exercise1).
+Vous trouverez les exercices relatifs à cette partie [ici](https://github.com/association-api/workshop-fp/tree/master/code/exercise1).
