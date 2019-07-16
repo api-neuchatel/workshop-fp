@@ -51,7 +51,12 @@ Le code proposé contient passablement d'effets de bord! Votre tâche consiste �
 
 ### Partie 2
 On s'attaque finalement à l'adaptation de la fonction `game`.
-- Commencez par écrire une fonction `without` qui prend en paramètre un tableau et un élément de ce même tableau et qui retourne une copie du tableau sans l'élément en question. Attention: cette fonction doit être pure également. Utilisez `without` dans `game` pour supprimer des decks les cartes tirées par le meneur et les joueurs.
+- Utilisez la fonction `without` ci-dessous qui prend en paramètre un tableau et un élément de ce même tableau et qui retourne une copie du tableau sans l'élément en question. Utilisez `without` dans `game` pour supprimer des decks les cartes tirées par le meneur et les joueurs.
+
+    ```js
+    // Type: ([A], A) => [A]
+    const without = (array, element) => [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
+    ```
 - Créez une fonction `endMessage` qui prend en paramètre les scores des joueurs et qui génère la string de résultat. Cette fonction doit également être pure. Utilisez-là pour afficher la résultat dans la console à la fin de la fonction `game`.
 - Mettez les valeurs `bountyDeck` ainsi que les decks et scores des joueurs dans un objet `state` et implémentez une fonction `nextState` qui prend un state en paramètre et génère le state suivant. Cette fonction doit également être pure. Utilisez-là pour mettre à jour le state dans la fonction `game`.
 - Créez une fonction `turnMessage` qui prend en paramètre un state et génère le message affiché à chaque tour. Cette fonction doit également être pure et vous pouvez l'utiliser dans `game`.
