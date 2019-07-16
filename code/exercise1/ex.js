@@ -1,5 +1,11 @@
+// Type: ([A], A) => [A]
+export function without(array, element) {
+     return [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
+}
+
 export function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
+    array.sort(() => Math.random() - 0.5)
+    return array;
 }
 
 export function getRandomCard(deck) {
@@ -47,6 +53,28 @@ function game() {
     if(player1Score > player2Score) { console.log("Player 1 wins!") }
     else if(player2Score > player1Score) { console.log("Player 2 wins!") }
     else { console.log("No winner.") }
+}
+
+
+export function endMessage(player1Score, player2Score) {
+    return "";
+}
+
+export function turnMessage(state) {
+    return "";
+}
+
+export function nextState(state) {
+    return {
+        gameDeck: state.gameDeck,
+        player1Deck: state.player1Deck,
+        player2Deck: state.player2Deck,
+        bounty: state.bounty,
+        player1Card: state.player1Card,
+        player2Card: state.player2Card,
+        player1Score: state.player1Score,
+        player2Score: state.player2Score
+    }
 }
 
 game()
