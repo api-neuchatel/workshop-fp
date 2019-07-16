@@ -1,7 +1,7 @@
 # Partie 2: Functions as First Class Citizen, Higher Order Functions et Closures
 
 ## 2.1: Abstraction
-Comme discuté brièvement en partie 1, la programmation fonctionnelle permet d'écrire facilement du code modulable en permettant la composition de fonctions. Prenons par exemple la fonction suivante, qui prend en paramètre un tableau de nombres et qui double la valeur de chaque élément de ce tableau.
+Comme discuté brièvement en [partie 1](https://github.com/association-api/workshop-fp/tree/master/course/1.%20TDD%20%2B%20No%20side-effect%20functions), la programmation fonctionnelle permet d'écrire facilement du code modulable en permettant la composition de fonctions. Prenons par exemple la fonction suivante, qui prend en paramètre un tableau de nombres et qui double la valeur de chaque élément de ce tableau.
 
 ```js
 // Type: [Double] => [Double]
@@ -65,7 +65,7 @@ function greet(gender) {
 Dans ce cas, `greet("Mr")` retourne une fonction qui prend deux paramètres (`firstname` et `lastname`).
 Evaluer `greet("Mr")("Jean", "Dupond")` retourne "Mr Jean Dupond". Ceci est très pratique pour faire de l'évaluation partielle de fonctions. Par exemple, on pourrait supposer que ce code a été écrit à un endroit où le sexe de la personne est déjà connu, mais pas son nom ni son prénom.
 
-Plus sur l'évaluation partielle en partie 3!
+Plus sur l'évaluation partielle en [partie 3](https://github.com/association-api/workshop-fp/tree/master/course/3.%20Currying%20%2B%20Lazy%20Evaluation)!
 
 ## 2.4: Closures
 Les __closures__ sont des fonctions qui ferment sur leur environnement d'exécution. Une lambda qui interagit avec des membres qui ne lui sont pas nécessairement passés en paramètre devient alors une __closure__.
@@ -82,7 +82,7 @@ Revenons à l'exemple de la section 2.1. Avec ces nouveaux outils, on peut crée
 
 ```js
 // Type: ([Double], Double => A) => [A]
-function map(numbers, f) {
+const map = (numbers, f) => {
   var tmp = []
   for(i = 0; i < numbers.length; i++) {
      tmp.push(f(numbers[i]))
@@ -95,7 +95,7 @@ Et one version générique de `even` comme ceci:
 
 ```js
 // Type: ([Double], Double => Boolean) => [Double]
-function filter(numbers, p) {
+const filter = (numbers, p) => {
   var tmp = []
   for(i = 0; i < numbers.length; i++) {
     if(p(numbers[i])) {
@@ -110,7 +110,7 @@ Pour aller plus loin... on pourrait même factoriser encore le code de ces deux 
 
 ```js
 // Type: ([Double], Double => Boolean, Double => A) => [A]
-function filterAndMap(numbers, p, f) {
+const filterAndMap = (numbers, p, f) => {
   var tmp = []
   for(i = 0; i < numbers.length; i++) {
     if(p(numbers[i])) {
@@ -145,3 +145,7 @@ Un exemple bien connu sur Internet:
 [🍔, 🍟, 🍿, 🍗].filter(isVegetarian) // [🍟, 🍿]
 [🍔, 🍟, 🍿, 🍗].reduce(eat) // 💩
 ```
+
+
+## 2.6: A vous de jouer!
+Vous trouverez les exercices relatifs à cette partie [ici](https://github.com/association-api/workshop-fp/tree/master/code/exercise2).
