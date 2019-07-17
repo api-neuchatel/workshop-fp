@@ -63,8 +63,8 @@ On s'attaque finalement à l'adaptation de la fonction `game`.
     - Appelez la fonction `player1Strategy` sur le `state.player1Deck` afin de recupérer la `player1Card`
     - Appelez la fonction `player2Strategy`sur le `state.player2Deck` afin de recupérer la `player2Card`
     - Appelez la fonction `without` sur le `state.bountyDeck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `bountyDeck`
-    - Appelez la fonction `without` sur le `state.player1Deck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `player1Deck`
-    - Appelez la fonction `without` sur le `state.player2Deck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `player2Deck`
+    - Appelez la fonction `without` sur le `state.player1Deck` afin de retirer la `player1Card` et ainsi obtenir le nouveau `player1Deck`
+    - Appelez la fonction `without` sur le `state.player2Deck` afin de retirer la `player2Card` et ainsi obtenir le nouveau `player2Deck`
     - Calculez le `player1Score` en additionnant la `bountyCard` si la carte `player1Card` est plus grande que la carte `player2Card`
     - Calculez le `player2Score` en additionnant la `bountyCard` si la carte `player2Card` est plus grande que la carte `player2Card`
     - Aggrégez toutes ces données dans une valeur et retournez le nouveau state
