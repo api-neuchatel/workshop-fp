@@ -69,5 +69,10 @@ On s'attaque finalement à l'adaptation de la fonction `game`.
     - Calculez le `player2Score` en additionnant la `bountyCard` si la carte `player2Card` est plus grande que la carte `player2Card`
     - Aggrégez toutes ces données dans une valeur et retournez le nouveau state
 - Créez une fonction `turnMessage` qui prend en paramètre un state et génère le message affiché à chaque tour.
-- Modifiez la fonction `game` en utilisant les fonctions `nextState`, `turnMessage` et `endMessage`
+- Modifiez la fonction `game` en utilisant les fonctions `nextState`, `turnMessage` et `endMessage`.
+
+        1. Commencez par mettre `bountyDeck`, `player1Deck`, `player2Deck`, `player1Score` et `player2Score` dans un objet `state`.
+        2. Adaptez la condition d'arrêt de la boucle `while`.
+        3. A chaque tour de boucle, il suffit maintenant de mettre à jour le `state` du jeu ainsi que d'afficher `turnMessage` dans la console.
+        4. A la fin du jeu, il suffit d'afficher `endMessage` dans la console.
 - Constatez que quasiment tout le code de base a été factorisé dans de nouvelles fonctions, toutes pures et que seule la fonction `game` produit des effets de bord de manière très restreinte et locale. Votre code n'est-il pas plus clair ainsi? :-)
