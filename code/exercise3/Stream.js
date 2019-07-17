@@ -56,16 +56,4 @@ let Stream = {
     takeUntil: s => p => p(s.value) ? [] : Helpers.prepend(s.value)(Stream.takeUntil(s.next())(p))
   }
   
-  // Examples
-  let integers = Stream.init(1)(x => x+1)
-  let even = Stream.map(integers)(x => 2*x)
-  let mul3 = Stream.filter(integers)(x => x % 3 === 0)
-  
-  
-  //console.log(Stream.take(integers)(10))
-  //console.log(Stream.takeUntil(integers)(x => 2*x === 10))
-  //console.log(Stream.take(even)(10))
-  //console.log(Stream.takeUntil(even)(x => 3*x === 60))
-  //console.log(Stream.take(mul3)(10))
-  
   export default Stream;
