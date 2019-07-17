@@ -23,7 +23,7 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
  * 1. I can sum the values of an array using an imperative loop and a mutable variable
  */
 const sumArrayImperativeLoop = (arr) => {
-    null
+    return null
 }
 
 /**
