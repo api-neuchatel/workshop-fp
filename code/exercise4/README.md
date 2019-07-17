@@ -27,7 +27,7 @@ Le fonctionnement pas à pas de reduce dans cet exemple est le suivant:
 5. Finalement, la valeur du dernier accumulateur est retournée
 
 - Créez la fonction `sumArrayReduce` qui permet de faire la somme dans nombres d'un tableau grâce à la méthode `reduce()` de Array en Javascript.
-- Pour les plus avancés, implémentez `reduce` de manière récursive!
+- Pour les plus avancés, implémentez `reduce` de manière récursive! *Conseil: implémentez une fonction récursive interne qui vous permette de gérer l'accumulateur. `reduce` ne fait alors que l'appeler avec certains paramètres bien choisis et n'est elle-même pas récursive.*
 
 Notez dès à présent que la majorité des fonctions que nous avons implémentées sont offertes en natif par le langage Javascript : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array.
 
