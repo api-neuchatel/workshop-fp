@@ -13,8 +13,7 @@ npm test    // Lancement des tests en continu
 
 ### First class functions
 
-- Stockez la fonction `_add` dans la constante `add` démontrant ainsi qu'il est possible de stocker une fonction de la même manière que n'importe quelle valeur.
-- Implémentez la fonction `doubleArray` qui reçoit en paramètre un tableau et qui applique la fonction `f` (qui double chaque élément du tableau).
+- Stockez la fonction `_double` dans la constante `double` démontrant ainsi qu'il est possible de stocker une fonction de la même manière que n'importe quelle valeur.
 
 ### Higher-order functions 
 
