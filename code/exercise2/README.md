@@ -21,6 +21,10 @@ npm test    // Lancement des tests en continu
 
 ## Exercice 2
 
+Cet exercice vous propose de manipuler quelques structures de données au travers de higher order functions. Au lieu de considérer que l'on va effectuer des __traitements__ sur les données, on verra à travers cet exercice qu'on peut les __transformer__. En particulier, nos deux transformations élémentaires `map` et `filter` nous permettent déjà de réaliser bon nombre d'opérations élémentaires, comme nous allons le voir.
+
+Notre ensemble de données est composé de `people`, un ensemble de personnes ayant chacune un `name`, un `id` ainsi qu'un `age`. Ces personnes ont la possibilité de noter différents `movies`. Chaque `movie` est caractérisé par un `name`, un `author` ainsi qu'un ensemble de `comments`, qui décrivent en fait des notes que les différents `people` leur ont attribué. Ces données sont disponibles dans le fichier `ex2.js`.
+
 ### Pratique
 
 - Créez la fonction `map` qui reçoit en paramètre un tableau et une fonction et qui retourne un tableau composé de l'application de la fonction à chaque élément du tableau.
