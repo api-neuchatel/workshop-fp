@@ -66,7 +66,7 @@ export function turnMessage(state) {
 
 export function nextState(state) {
     return {
-        gameDeck: state.gameDeck,
+        bountyDeck: state.bountyDeck,
         player1Deck: state.player1Deck,
         player2Deck: state.player2Deck,
         bounty: state.bounty,
