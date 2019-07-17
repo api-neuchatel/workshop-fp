@@ -1,45 +1,51 @@
 // Type: [A] => [A]
-let shuffle = array => array.slice().sort(() => Math.random() - 0.5)
+export function shuffle(array) {
+    return array.slice().sort(() => Math.random() - 0.5)
+}
 
 // Type: [A] => A
-let getRandomCard = deck => shuffle(deck)[0]
+export function getRandomCard(deck) {
+    return shuffle(deck)[0]
+}
+
+// Type: ([A], A) => A
+export function getCard(deck, card) { return card }
 
 // Type: [A] => A
-let player1Strategy = getRandomCard
+export function player1Strategy(deck) { return getRandomCard(deck) }
 
 // Type: A => A
-let player2Strategy = card => card
+export function player2Strategy(deck, card) { return getCard(deck, card) }
 
 // Type: ([A], A) => [A]
-let without = (array, element) => [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
+export function without(array, element) {
+    return [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
+}
 
 // Type: (Int, Int) => String
-let endMessage = (player1Score, player2Score) => {
+export function endMessage(player1Score, player2Score) {
+    const score = "Score: " + player1Score + " - " + player2Score + "\n"
 
-    let winner = () => {
-        if(player1Score > player2Score) { return "Player 1 wins!" }
-        else if(player2Score > player1Score) { return "Player 2 wins!" }
-        return "No winner."
-    }
-    let score = "Score: " + player1Score + " - " + player2Score
-
-    return score + "\n" + winner()
+    if(player1Score > player2Score) { return score + "Player 1 wins!" }
+    else if(player2Score > player1Score) { return score + "Player 2 wins!" }
+    return score + "No winner."
 }
 
 // Type: State => String
-let turnMessage = state =>  "*** New turn! ***\n" +
-                            "Card is " + state.bounty + "\n" + 
-                            "Player 1 drew " + state.player1Card + "\n" +
-                            "Player 2 drew " + state.player2Card + "\n"
+export function turnMessage(state) {
+    return "*** New Turn! ***\n" +
+            "Player 1 plays " + state.player1Card + "\n" +
+            "Player 2 plays " + state.player2Card + "\n"
+}
 
 // Type: State => State
-let nextState = state => {
-    let bounty = getRandomCard(state.gameDeck)
+export function nextState(state) {
+    let bounty = getRandomCard(state.bountyDeck)
     let player1Card = player1Strategy(state.player1Deck)
-    let player2Card = player2Strategy(bounty)
+    let player2Card = player2Strategy(state.player2Deck, bounty)
 
     return {
-        gameDeck: without(state.gameDeck, bounty),
+        bountyDeck: without(state.bountyDeck, bounty),
         player1Deck: without(state.player1Deck, player1Card),
         player2Deck: without(state.player2Deck, player2Card),
         bounty: bounty,
@@ -50,17 +56,17 @@ let nextState = state => {
     }
 }
 
-function game() {
+export function game() {
 
     let state = {
-        gameDeck: [1, 2, 3, 4, 5],
+        bountyDeck: [1, 2, 3, 4, 5],
         player1Deck: [1, 2, 3, 4, 5],
         player2Deck: [1, 2, 3, 4, 5],
         player1Score: 0,
         player2Score: 0
     }
 
-    while(state.gameDeck.length > 0) {
+    while(state.bountyDeck.length > 0) {
         state = nextState(state)
         console.log(turnMessage(state))
     }
@@ -69,5 +75,3 @@ function game() {
 }
 
 game()
-
-export { shuffle, without, endMessage, turnMessage, nextState }
