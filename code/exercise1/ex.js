@@ -5,7 +5,7 @@ export function without(array, element) {
 
 export function shuffle(array) {
     array.sort(() => Math.random() - 0.5)
-    return array;
+    return array
 }
 
 export function getRandomCard(deck) {
@@ -57,11 +57,11 @@ export function game() {
 
 
 export function endMessage(player1Score, player2Score) {
-    return "";
+    return ""
 }
 
 export function turnMessage(state) {
-    return "";
+    return ""
 }
 
 export function nextState(state) {
