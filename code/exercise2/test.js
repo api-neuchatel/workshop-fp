@@ -19,11 +19,8 @@ const should = chai.should();
 
 describe('First-class functions', function() {
   it('1. I can store a function in a variable', function() {
-    should.not.equal(double, null, "Et si on stockait la fonction _add dans add?");
+    should.not.equal(double, null, "Et si on stockait la fonction _double dans double?");
     double(2).should.equal(4);
-  });
-  it('2. I can pass a function to another function as parameter', function() {
-    doubleArray([1,2,4], (x) => x * 2).should.deep.equal([2,4,8]);
   });
 })
 

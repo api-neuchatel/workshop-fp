@@ -25,18 +25,6 @@ function _add(x,y) {
 const double = null;
 
 /**
- * Double the values of arr according to function f
- * Type: ([A], A => A) => [A]
- * 
- * TODO : First-class functions
- * 2. You can pass a function to another function as parameter
- */
-export function doubleArray(arr, f) {
-    return [];
-}
-
-
-/**
  * Returns a function that adds 5 to a given number
  * Type: Number => (Number => Number) 
  * 
