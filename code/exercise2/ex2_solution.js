@@ -137,7 +137,7 @@ export function peopleAcronymsUppercaseStartWithD() {
 /**
  * Returns the comments for each user by movie
  * Type : Unit -> [{movie, name, grade}]
- * Example : [{name: "Lord of the Rings", name: "Xavier", grade: 5},{name: "Empire strikes back", name: "Arnaud", grade: 6}]
+ * Example : [{movie: "Lord of the Rings", name: "Xavier", grade: 5},{movie: "Empire strikes back", name: "Arnaud", grade: 6}]
  * 
  * TODO:
  * 7. I can get all comments for each movie and people
