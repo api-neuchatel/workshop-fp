@@ -3,7 +3,7 @@
  * Type: Number => Number
  */
 function _double(x) {
-    return x * 2;
+    return x * 2
 }
 
 /**
@@ -11,7 +11,7 @@ function _double(x) {
  * Type: (Number, Number) => Number
  */
 function _add(x,y) {
-    return x + y;
+    return x + y
 }
 
 
@@ -22,7 +22,7 @@ function _add(x,y) {
  * TODO : First class functions
  * 1. You can store a function in a variable
  */
-const double = null;
+const double = null
 
 /**
  * Returns a function that adds 5 to a given number
@@ -32,6 +32,6 @@ const double = null;
  * 1. You can create a function from a function
  * 
  */ 
-const add5 = null;
+const add5 = null
 
-export {double, add5};
+export {double, add5}
