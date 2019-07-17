@@ -9,7 +9,7 @@ A chaque tour, le meneur de jeu tire une carte au hasard de son jeu. Cette carte
 
 Dans notre implémentation, chaque joueur adopte une stratégie différente. Le joueur 1 tire une carte au hasard de son jeu alors que le joueur 2 joue systématiquement la même carte que le meneur de jeu.
 
-Vous pouvez exécuter le programme plusieurs fois pour visualiser différentes partie de Gops entre les deux joueurs. Pour cela, utilisez la commande `node ex.js`.
+Vous pouvez exécuter le programme plusieurs fois pour visualiser différentes partie de Gops entre les deux joueurs. Pour cela, utilisez la commande `npm start` (CTRL + C pour sortir du programme).
 
 Voici un exemple de partie de Gops:
 
@@ -46,18 +46,28 @@ Player 1 wins!
 ## L'exercice
 Le code proposé contient passablement d'effets de bord! Votre tâche consiste à en supprimer un maximum et à rassembler au maximum le code qui en contient et dont on ne peut pas se passer.
 
+Commencez par exécuter les commandes suivantes au sein de votre Terminal
+```bash
+npm install         // Installation des dépendances
+npm test            // Lancement des tests en continu
+```
+
 ### Partie 1
 - Commencez par supprimer tous les effets de bords des fonctions `shuffle`, `getRandomCard`, `getCard`, `player1Strategy` et `player2Strategy`. Ces fonctions doivent devenir __pures__!
 
 ### Partie 2
 On s'attaque finalement à l'adaptation de la fonction `game`.
-- Utilisez la fonction `without` ci-dessous qui prend en paramètre un tableau et un élément de ce même tableau et qui retourne une copie du tableau sans l'élément en question. Utilisez `without` dans `game` pour supprimer des decks les cartes tirées par le meneur et les joueurs.
-
-    ```js
-    // Type: ([A], A) => [A]
-    const without = (array, element) => [...array.slice(0, array.indexOf(element)), ...array.slice(array.indexOf(element) + 1)]
-    ```
-- Créez une fonction `endMessage` qui prend en paramètre les scores des joueurs et qui génère la string de résultat. Cette fonction doit également être pure. Utilisez-là pour afficher la résultat dans la console à la fin de la fonction `game`.
-- Mettez les valeurs `bountyDeck` ainsi que les decks et scores des joueurs dans un objet `state` et implémentez une fonction `nextState` qui prend un state en paramètre et génère le state suivant. Cette fonction doit également être pure. Utilisez-là pour mettre à jour le state dans la fonction `game`.
-- Créez une fonction `turnMessage` qui prend en paramètre un state et génère le message affiché à chaque tour. Cette fonction doit également être pure et vous pouvez l'utiliser dans `game`.
+- Créez une fonction `endMessage` qui prend en paramètre les scores des joueurs et qui génère la string de résultat. Cette fonction doit également être pure
+- Implémentez la fonction `nextState`, celle-ci prend en paramètre un state et génère le state suivant. Cette fonction doit également être pure. Pour ce faire, effectuez les opérations suivantes :
+    - Appelez la fonction `getRandomCard` sur le `state.bountyDeck` afin de recupérer la `bountyCard`
+    - Appelez la fonction `player1Strategy` sur le `state.player1Deck` afin de recupérer la `player1Card`
+    - Appelez la fonction `player2Strategy`sur le `state.player2Deck` afin de recupérer la `player2Card`
+    - Appelez la fonction `without` sur le `state.bountyDeck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `bountyDeck`
+    - Appelez la fonction `without` sur le `state.player1Deck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `player1Deck`
+    - Appelez la fonction `without` sur le `state.player2Deck` afin de retirer la `bountyCard` et ainsi obtenir le nouveau `player2Deck`
+    - Calculez le `player1Score` en additionnant la `bountyCard` si la carte `player1Card` est plus grande que la carte `player2Card`
+    - Calculez le `player2Score` en additionnant la `bountyCard` si la carte `player2Card` est plus grande que la carte `player2Card`
+    - Aggrégez toutes ces données dans une valeur et retournez le nouveau state
+- Créez une fonction `turnMessage` qui prend en paramètre un state et génère le message affiché à chaque tour.
+- Modifiez la fonction `game` en utilisant les fonctions `nextState`, `turnMessage` et `endMessage`
 - Constatez que quasiment tout le code de base a été factorisé dans de nouvelles fonctions, toutes pures et que seule la fonction `game` produit des effets de bord de manière très restreinte et locale. Votre code n'est-il pas plus clair ainsi? :-)
