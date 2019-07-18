@@ -19,4 +19,6 @@
 * Projet
     * [Slides](https://association-api.github.io/workshop-fp/code/project/slides)
     * [Exercice](https://github.com/association-api/workshop-fp/tree/master/code/project)
-    
+
+# Ressources
+Vous trouverez [ici](https://websitesetup.org/javascript-cheat-sheet/) quelques rappels de syntaxe et de fonctions de l'API standard Javascript!
