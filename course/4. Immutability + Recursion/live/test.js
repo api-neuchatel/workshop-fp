@@ -1,8 +1,20 @@
-import { map, filter } from './base';
+import { alice, bob, map, filter } from './base';
 
 const chai = require('chai');
 const should = chai.should();
   
+describe('Alice', function() {
+  it('Should be born in 1985', function() {
+    alice.birthDate.getFullYear().should.equal(1985)
+  })
+})
+
+describe('Bob', function() {
+  it('Should be born in 2000', function() {
+    bob.birthDate.getFullYear().should.equal(2000)
+  })
+})
+
 describe('Map', function() {
   it('Should return empty array on empty input', function() {
     map([], _ => _).should.deep.equal([])

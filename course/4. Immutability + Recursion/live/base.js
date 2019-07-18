@@ -3,8 +3,20 @@
  * Template Live Coding
  */
 
+//////////////////
+// Immutability //
+//////////////////
+let birthDate = new Date(1985, 11, 26)
+const alice = { name: "Alice", birthDate: birthDate }
+
+birthDate.setFullYear(2000)
+const bob = { name: "Bob", birthDate: birthDate }
+
+///////////////
+// Récursion //
+///////////////
 // Type: ([A], A => B) => [B]
-let map = (array, f) => {
+const map = (array, f) => {
     var tmp = []
     for(let i = 0; i < array.length; i++) {
         tmp.push(f(array[i]))
@@ -13,7 +25,7 @@ let map = (array, f) => {
 }
 
 // Type: ([A], A => Boolean) => [A]
-let filter = (array, p) => {
+const filter = (array, p) => {
     var tmp = []
     for(let i = 0; i < array.length; i++) {
         if(p(array[i])) {
@@ -23,4 +35,4 @@ let filter = (array, p) => {
     return tmp
 }
 
-export { map, filter }
+export { alice, bob, map, filter }
