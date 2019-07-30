@@ -5,7 +5,7 @@ Cet exercice est tiré de la conférence "Solving Problems the Clojure Way" de R
 Vous trouverez dans le fichier `ex.js` une implémentation d'un jeu de Gops (Game of Pure Strategy). Il s'agit d'un jeu de cartes au tour-à-tour pour deux joueurs et un meneur de jeu.
 
 ## Gops
-A chaque tour, le meneur de jeu tire une carte au hasard de son jeu. Cette carte porte le nom de "bounty". La valeur inscrite sur celle-ci définit le nombre de points qui reviendra au joueur qui la gagne. Ensuite, chaque joueur choisit une carte dans son jeu et la pose sur la table. Le joueur ayant posé la plus grande carte gagne le bounty. Finalement, les 3 cartes sont défaussées et le jeu continue jusqu'à ce que le meneur de jeu n'ait plus de cartes.
+A chaque tour, le meneur de jeu tire une carte au hasard de son jeu et la montre aux joueurs. Cette carte porte le nom de "bounty". La valeur inscrite sur celle-ci définit le nombre de points qui reviendra au joueur qui la gagne. Ensuite, chaque joueur choisit une carte dans son jeu et la pose sur la table. Le joueur ayant posé la plus grande carte gagne le bounty. Finalement, les 3 cartes sont défaussées et le jeu continue jusqu'à ce que le meneur de jeu n'ait plus de cartes.
 
 Dans notre implémentation, chaque joueur adopte une stratégie différente. Le joueur 1 tire une carte au hasard de son jeu alors que le joueur 2 joue systématiquement la même carte que le meneur de jeu.
 

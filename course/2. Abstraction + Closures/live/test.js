@@ -1,4 +1,4 @@
-import { divisibleBy2, triple } from '././base';
+import { divisibleBy2, triple } from './base';
 
 const chai = require('chai');
 const should = chai.should();

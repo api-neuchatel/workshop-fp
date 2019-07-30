@@ -23,7 +23,11 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
  * 1. I can sum the values of an array using an imperative loop and a mutable variable
  */
 const sumArrayImperativeLoop = (arr) => {
-    return null
+    let tmp = 0
+    for(let item of arr){
+        tmp += item
+    }
+    return tmp
 }
 
 /**
@@ -32,9 +36,7 @@ const sumArrayImperativeLoop = (arr) => {
  * 
  * 2. I can sum the values fo an array using recursion
  */
-const sumArrayRecusion = (arr, sum = 0) => {
-    return null
-}
+const sumArrayRecusion = (arr, sum = 0) => arr.length === 0 ? sum : sumArrayRecusion(tail(arr), sum + head(arr))
 
 /**
  * Sum an array arr with a the reduce function.
@@ -42,7 +44,7 @@ const sumArrayRecusion = (arr, sum = 0) => {
  * 
  * 3. I can sum the values fo an array using reduce
  */
-const sumArrayReduce = null
+const sumArrayReduce = arr => arr.reduce((x, y) => x + y)
 
 /**
  * Reduces the values of an array as explained in the problem statement.
@@ -51,8 +53,8 @@ const sumArrayReduce = null
  * Type: [A] => (B => A) => B
  */
 const reduce = arr => f => {
-    const iter = arr => acc => null
-    return iter(null)(null)
+    const iter = arr => acc => arr.length === 0 ? acc : iter(tail(arr))(f(acc, head(arr)))
+    return iter(tail(arr))(head(arr))
 }
 
 export { sumArrayImperativeLoop, sumArrayRecusion, sumArrayReduce, reduce }

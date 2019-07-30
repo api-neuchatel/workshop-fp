@@ -17,6 +17,7 @@ npm test    // Lancement des tests en continu
 - Créez l   a fonction `multiplyBy20`en utilisant la fonction `multipleCurry`.
 
 ## Lazy Evaluation
+Cet exercice vous permet de mettre en application le concept de `Stream`. Commencez par lire et comprendre l'API Stream définie pour vous [ici](https://github.com/association-api/workshop-fp/blob/master/code/exercise3/Stream.js). Familiarisez-vous avec le fonctionnement des fonctions `map`, `filter`, `take`, et `takeUntil`, qui vous seront utiles pour les exercices ci-dessous.
 
 - Créez la fonction `infiniteStreamOf1` qui retourne la valeur 1 de manière infinie.
 - Créez la fonction `infiniteStreamThatDoubleValues` qui commence à la valeur 0 et qui s'incrémente de 1. Appliquez ensuite une transformation (`map`) afin de doubler chacune des valeurs.

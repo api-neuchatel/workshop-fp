@@ -83,6 +83,6 @@ Puis, implémentez les fonctions suivantes dans le fichier `src.js` :
 - `rewind10Fames()` : Il est possible de revenir 10 frames dans le passé grâce à la touche R
 - `moveMonsters()` : Les monstres bougent
 - `isJumpReachedLimit()` : Le personnage a une limite de hauteur de saut
-- `collideWithMonsters()` : Retourne si une collision a lieu entre le personnage et un des monstres
+- `collideWithMonsters()` : Retourne si une collision a lieu entre le personnage et un des monstres. *Hint: vous pouvez utiliser la fonction [some](https://www.w3schools.com/jsref/jsref_some.asp) de l'API standard Javascript*
 
 Pour les plus assidu.e.s, vous pouvez supprimer d'autres fonctions et tentez votre propre implémentation ! Ou effectuez des améliorations sur le gameplay.

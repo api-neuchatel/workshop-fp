@@ -62,9 +62,8 @@ function flat(arr) {
  * 1. I can pass an array and a function to apply a transformation via the map() function
  */
 export function map(arr, f) {
-    return [];
+    return []
 }
-
 
 
 /**
@@ -75,7 +74,7 @@ export function map(arr, f) {
  * 2. I can pass an array and a predicate to filter out items via the filter() function
  */
 export function filter(arr, p) {
-    return [];
+    return []
 }
 
 /**
@@ -83,10 +82,10 @@ export function filter(arr, p) {
  * Type: Int => Person
  * 
  * TODO:
- * 3. I can create a function that closes over a variable in its environnement, that\' called a closure!
+ * 3. I can create a function that closes over a variable in its environnement, that\'s called a closure!
  */
 export function findPersonById(id) {
-    return null;
+    return null
 }
 
 /**
@@ -97,7 +96,7 @@ export function findPersonById(id) {
  * 4. I can get people younger than 30'
  */
 export function peopleYoungerThan30() {
-    return [];
+    return []
 }
 
 /**
@@ -109,7 +108,7 @@ export function peopleYoungerThan30() {
  * 5. I can get two letters acronyms
  */
 export function peopleAcronyms() {
-    return [];
+    return []
 }
 
 /**
@@ -121,17 +120,17 @@ export function peopleAcronyms() {
  * 6. I can get two letters acronyms in uppercase that starts with D
  */
 export function peopleAcronymsUppercaseStartWithD() {
-    return  [];
+    return []
 }
 
 /**
  * Returns the comments for each user by movie
  * Type : Unit -> [{movie, name, grade}]
- * Example : [{name: "Lord of the Rings", name: "Xavier", grade: 5},{name: "Empire strikes back", name: "Arnaud", grade: 6}]
+ * Example : [{movie: "Lord of the Rings", name: "Xavier", grade: 5},{movie: "Empire strikes back", name: "Arnaud", grade: 6}]
  * 
  * TODO:
  * 7. I can get all comments for each movie and people
  */
 export function commentsByMovie() {
-    return [];
+    return []
 }

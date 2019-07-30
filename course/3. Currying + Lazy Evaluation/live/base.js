@@ -9,9 +9,20 @@ function greet(gender) {
 }
 
 // Lazy evaluation
-var integers = []
-for(let i = 0; i < Number.MAX_SAFE_INTEGER; i++) {
-    integers.push(i)
+function tooLongToRUn() {
+    var integers = []
+    for(let i = 0; i < Number.MAX_SAFE_INTEGER; i++) {
+        integers.push(i)
+    }
+    return integers
 }
 
-export { greet }
+let Stream = {
+    init: x => f => null,
+
+    take: stream => n => null,
+
+    map: s => f => null
+}
+
+export { greet, Stream }

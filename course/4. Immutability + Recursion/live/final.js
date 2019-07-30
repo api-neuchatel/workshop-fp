@@ -3,6 +3,17 @@
  * Completed Live Coding
  */
 
+ //////////////////
+// Immutability //
+//////////////////
+let birthDate = new Date(1985, 11, 26)
+const alice = { name: "Alice", birthDate: birthDate }
+
+const bob = { name: "Bob", birthDate: new Date(2000, birthDate.getMonth(), birthDate.getDay()) }
+
+///////////////
+// Récursion //
+///////////////
 /**
  * Returns the head of an array (ie the first element).
  * Type: [A] => A
@@ -25,15 +36,15 @@ let prepend = x => xs => x === null ? xs : [x].concat(xs)
  * Applies a function (f) to each element of an array (xs).
  * Type: [A] => (A => B) => [B]
  */
-let map = xs => f => xs.length === 0 ? [] : prepend(f(head(xs)))(map(tail(xs))(f))
+let map = (xs, f) => xs.length === 0 ? [] : prepend(f(head(xs)))(map(tail(xs), f))
 
 /**
  * Filters the elements of an array (xs) keeping only those who match a given predicate (p).
  * Type: [A] => (A => Boolean) => [A]
  */
-let filter = xs => p => {
+let filter = (xs, p) => {
   if(xs.length === 0) { return [] }
-  let queue = filter(tail(xs))(p)
+  let queue = filter(tail(xs), p)
   return p(head(xs)) ? prepend(head(xs))(queue) : queue
 }
 
@@ -43,4 +54,4 @@ let filter = xs => p => {
  */
 let reduce = xs => c => xs.length === 1 ? head(xs) : c(head(xs))(reduce(tail(xs))(c))
 
-export { map, filter }
+export { alice, bob, map, filter }
