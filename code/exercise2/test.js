@@ -49,6 +49,7 @@ describe('Movies et peoples', function() {
     peopleYoungerThan30().length.should.equal(2);
   });
   it('5. I can get two letters acronyms', function() {
+    peopleAcronyms().length.should.equal(6);
     peopleAcronyms().every(e => {
       e.length.should.equal(2)
     });
